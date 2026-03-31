@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Currency Exchange | XtraProfit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#29695b",
+              "on-tertiary-fixed-variant": "#3e4c00",
+              "on-tertiary-container": "#85a000",
+              "on-primary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-tertiary": "#ffffff",
+              "inverse-primary": "#abc7ff",
+              "on-surface": "#191c1d",
+              "on-primary-fixed-variant": "#24467c",
+              "tertiary-fixed": "#caf300",
+              "outline-variant": "#c4c6d1",
+              "outline": "#747781",
+              "tertiary-container": "#283200",
+              "primary-container": "#002d62",
+              "error": "#ba1a1a",
+              "surface-container": "#edeeef",
+              "surface-container-lowest": "#ffffff",
+              "surface": "#f8f9fa",
+              "surface-container-low": "#f3f4f5",
+              "primary": "#00193c",
+              "inverse-surface": "#2e3132",
+              "surface-dim": "#d9dadb",
+              "surface-variant": "#e1e3e4",
+              "primary-fixed": "#d7e2ff",
+              "surface-container-high": "#e7e8e9",
+              "on-background": "#191c1d",
+              "background": "#f8f9fa",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed-dim": "#b0d500",
+              "on-tertiary-fixed": "#171e00",
+              "on-primary-container": "#7796d1",
+              "surface-tint": "#3e5e95",
+              "on-primary-fixed": "#001b3f",
+              "secondary-fixed": "#afefdd",
+              "tertiary": "#151c00",
+              "surface-bright": "#f8f9fa",
+              "inverse-on-surface": "#f0f1f2",
+              "surface-container-highest": "#e1e3e4",
+              "on-secondary-container": "#2e6d5f",
+              "secondary-fixed-dim": "#94d3c1",
+              "secondary-container": "#acedda",
+              "on-surface-variant": "#43474f",
+              "on-error": "#ffffff",
+              "on-secondary-fixed": "#00201a",
+              "on-error-container": "#93000a",
+              "primary-fixed-dim": "#abc7ff",
+              "on-secondary-fixed-variant": "#065043"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .ticker-wrap {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .ticker-content {
+        display: inline-block;
+        animation: ticker 30s linear infinite;
+      }
+      @keyframes ticker {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .sovereign-shadow {
+        box-shadow: 0px 24px 48px rgba(25, 28, 29, 0.06);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f8f9fa] dark:bg-slate-950 backdrop-blur-md bg-opacity-80 flex justify-between items-center w-full px-8 py-4 max-w-full">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-[#00193c] dark:text-slate-50 font-headline">XtraProfit</span>
+<div class="hidden md:flex gap-8 font-headline font-semibold tracking-tight">
+<a class="text-[#00193c] dark:text-white border-b-2 border-[#00193c] dark:border-slate-100 pb-1" href="#">Currency</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00193c] dark:hover:text-slate-100 transition-colors" href="#">Profit</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00193c] dark:hover:text-slate-100 transition-colors" href="#">Crypto</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00193c] dark:hover:text-slate-100 transition-colors" href="#">Gold</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container px-4 py-2 rounded-sm">
+<span class="material-symbols-outlined text-outline text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body" placeholder="Search markets..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-md font-headline font-bold text-sm hover:scale-95 duration-150 ease-in-out">Sign In</button>
+</div>
+</nav>
+<!-- Ticker Section -->
+<div class="mt-20 bg-surface-container-highest py-2 border-b border-outline-variant/15">
+<div class="ticker-wrap w-full px-8 overflow-hidden">
+<div class="ticker-content flex gap-12 text-[0.6875rem] font-label uppercase tracking-widest font-semibold">
+<span class="flex items-center gap-2">USD/PKR <span class="text-secondary">278.45 +0.12%</span></span>
+<span class="flex items-center gap-2">SAR/PKR <span class="text-secondary">74.23 +0.05%</span></span>
+<span class="flex items-center gap-2">AED/PKR <span class="text-secondary">75.81 +0.02%</span></span>
+<span class="flex items-center gap-2">EUR/PKR <span class="text-error">302.15 -0.45%</span></span>
+<span class="flex items-center gap-2">GBP/PKR <span class="text-secondary">354.12 +0.18%</span></span>
+<span class="flex items-center gap-2">USD/PKR <span class="text-secondary">278.45 +0.12%</span></span>
+<span class="flex items-center gap-2">SAR/PKR <span class="text-secondary">74.23 +0.05%</span></span>
+<span class="flex items-center gap-2">AED/PKR <span class="text-secondary">75.81 +0.02%</span></span>
+<span class="flex items-center gap-2">EUR/PKR <span class="text-error">302.15 -0.45%</span></span>
+<span class="flex items-center gap-2">GBP/PKR <span class="text-secondary">354.12 +0.18%</span></span>
+</div>
+</div>
+</div>
+<main class="max-w-[1440px] mx-auto px-8 py-16">
+<!-- Hero Section -->
+<header class="mb-20">
+<div class="inline-block px-3 py-1 bg-primary text-on-primary text-[0.6875rem] font-label uppercase tracking-widest mb-6">Real-Time Ledger</div>
+<h1 class="font-headline font-extrabold text-5xl md:text-6xl text-primary tracking-tighter leading-tight max-w-4xl mb-6">
+                Live Currency Exchange <br/> Rates in Pakistan
+            </h1>
+<p class="font-body text-on-surface-variant text-lg max-w-2xl leading-relaxed">
+                Precision-engineered financial data for the sovereign investor. Access interbank and open market rates with millisecond accuracy, ensuring your global capital moves with certainty.
+            </p>
+</header>
+<!-- Bento Grid Layout for Converter & Key Stats -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24">
+<!-- Interactive Currency Converter Card -->
+<section class="lg:col-span-8 bg-surface-container-lowest p-8 sovereign-shadow border-b-2 border-primary">
+<div class="flex justify-between items-center mb-10">
+<h2 class="font-headline font-bold text-2xl text-primary">Sovereign Converter</h2>
+<span class="text-[0.6875rem] font-label text-on-surface-variant uppercase tracking-widest flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                        Last Updated: Oct 24, 2023 - 14:30 PKT
+                    </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-11 items-center gap-4">
+<div class="md:col-span-4 space-y-2">
+<label class="block text-[0.6875rem] font-label text-on-surface-variant uppercase tracking-widest">Amount</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none focus:ring-0 focus:border-primary px-4 py-4 font-headline font-bold text-xl rounded-sm" type="number" value="1000"/>
+</div>
+</div>
+<div class="md:col-span-3 space-y-2">
+<label class="block text-[0.6875rem] font-label text-on-surface-variant uppercase tracking-widest">From</label>
+<div class="relative">
+<select class="w-full bg-surface-container-highest border-none focus:ring-0 px-4 py-4 font-body font-semibold rounded-sm appearance-none">
+<option>USD - US Dollar</option>
+<option>SAR - Saudi Riyal</option>
+<option>AED - UAE Dirham</option>
+</select>
+</div>
+</div>
+<div class="md:col-span-1 flex justify-center pt-6">
+<div class="w-10 h-10 bg-surface-container-high rounded-full flex items-center justify-center hover:bg-surface-dim transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary">sync_alt</span>
+</div>
+</div>
+<div class="md:col-span-3 space-y-2">
+<label class="block text-[0.6875rem] font-label text-on-surface-variant uppercase tracking-widest">To</label>
+<div class="relative">
+<select class="w-full bg-surface-container-highest border-none focus:ring-0 px-4 py-4 font-body font-semibold rounded-sm appearance-none">
+<option>PKR - Pakistan Rupee</option>
+<option>USD - US Dollar</option>
+<option>GBP - British Pound</option>
+</select>
+</div>
+</div>
+</div>
+<div class="mt-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="block text-on-surface-variant text-sm mb-1">1,000.00 USD =</span>
+<div class="font-headline font-extrabold text-4xl text-primary tracking-tight">278,450.00 PKR</div>
+<p class="text-[0.6875rem] font-label text-secondary mt-2 font-bold uppercase tracking-widest">Interbank rate +0.12% spread</p>
+</div>
+<button class="bg-tertiary-fixed text-on-tertiary-fixed font-headline font-extrabold px-10 py-5 rounded-md hover:scale-95 transition-transform flex items-center gap-3">
+                        Convert Now
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Sidebar Quick View -->
+<aside class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-primary-container p-6 rounded-sm relative overflow-hidden group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-110 transition-transform duration-700" data-alt="abstract financial data visualization with glowing neon lines on a deep blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHvHWuu9OxTtYi_R_LRwW-c6V0DTbvhf_PxRzcvZ1UFs4QogeHwWbo-Ku_qzPRtk7xil8iEpIfxa0f9CL8NMLVrwGWYL4jMWyUInSbimCCKaIngkFVko4-Vn9c4NsQ5urs7FBeNlONU74c8Er5nwRuHooICTS2f1C9Pt17BLlx4c1Go2Gxfl1fniu8xYoiDPYxXIrUxNWchF3N7eGzlu6ivEl1edPI3QU0yJGK2ssN5aBSJjNbWu-v1lTDMfL8CRRNAU1MUzI4VDg"/>
+<div class="relative z-10">
+<h3 class="font-headline font-bold text-white text-xl mb-4">Market Outlook</h3>
+<p class="text-on-primary-container text-sm leading-relaxed mb-6">PKR remains stable against major currencies following recent fiscal policy adjustments. Analysts predict a narrow trading band for the coming week.</p>
+<a class="text-tertiary-fixed font-label text-[0.6875rem] font-bold uppercase tracking-widest flex items-center gap-2" href="#">View Analysis <span class="material-symbols-outlined text-sm">north_east</span></a>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-sm">
+<h3 class="font-headline font-bold text-primary text-lg mb-4">Forex Reserves</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-end border-b border-outline-variant/30 pb-2">
+<span class="text-on-surface-variant text-xs font-label uppercase tracking-widest">Central Bank</span>
+<span class="font-headline font-bold text-primary">$8.24B</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant/30 pb-2">
+<span class="text-on-surface-variant text-xs font-label uppercase tracking-widest">Commercial Banks</span>
+<span class="font-headline font-bold text-primary">$5.12B</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Today's Rates Table Section -->
+<section class="mb-24">
+<div class="flex items-center gap-4 mb-8">
+<div class="h-[2px] w-12 bg-primary"></div>
+<h2 class="font-headline font-extrabold text-3xl text-primary tracking-tight">Today's Exchange Rates</h2>
+</div>
+<div class="bg-surface-container-low overflow-hidden rounded-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high">
+<th class="px-6 py-4 font-label text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-bold">Currency</th>
+<th class="px-6 py-4 font-label text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-bold">Buy Rate (PKR)</th>
+<th class="px-6 py-4 font-label text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-bold">Sell Rate (PKR)</th>
+<th class="px-6 py-4 font-label text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-bold">Change</th>
+<th class="px-6 py-4 font-label text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-bold">Market Depth</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-6 flex items-center gap-4">
+<span class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-xs text-primary">US</span>
+<div>
+<div class="font-headline font-bold text-primary">USD</div>
+<div class="text-[0.6875rem] text-on-surface-variant">US Dollar</div>
+</div>
+</td>
+<td class="px-6 py-6 font-headline font-bold text-primary">278.45</td>
+<td class="px-6 py-6 font-headline font-bold text-primary">280.15</td>
+<td class="px-6 py-6 text-secondary text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +0.45
+                            </td>
+<td class="px-6 py-6">
+<div class="w-24 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-6 flex items-center gap-4">
+<span class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-xs text-primary">SA</span>
+<div>
+<div class="font-headline font-bold text-primary">SAR</div>
+<div class="text-[0.6875rem] text-on-surface-variant">Saudi Riyal</div>
+</div>
+</td>
+<td class="px-6 py-6 font-headline font-bold text-primary">74.23</td>
+<td class="px-6 py-6 font-headline font-bold text-primary">75.05</td>
+<td class="px-6 py-6 text-secondary text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +0.12
+                            </td>
+<td class="px-6 py-6">
+<div class="w-24 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[70%]"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-6 flex items-center gap-4">
+<span class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-xs text-primary">AE</span>
+<div>
+<div class="font-headline font-bold text-primary">AED</div>
+<div class="text-[0.6875rem] text-on-surface-variant">UAE Dirham</div>
+</div>
+</td>
+<td class="px-6 py-6 font-headline font-bold text-primary">75.81</td>
+<td class="px-6 py-6 font-headline font-bold text-primary">76.50</td>
+<td class="px-6 py-6 text-on-surface-variant text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">horizontal_rule</span> 0.00
+                            </td>
+<td class="px-6 py-6">
+<div class="w-24 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-6 flex items-center gap-4">
+<span class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-xs text-primary">EU</span>
+<div>
+<div class="font-headline font-bold text-primary">EUR</div>
+<div class="text-[0.6875rem] text-on-surface-variant">Euro</div>
+</div>
+</td>
+<td class="px-6 py-6 font-headline font-bold text-primary">302.15</td>
+<td class="px-6 py-6 font-headline font-bold text-primary">304.80</td>
+<td class="px-6 py-6 text-error text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_down</span> -1.20
+                            </td>
+<td class="px-6 py-6">
+<div class="w-24 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-6 flex items-center gap-4">
+<span class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-xs text-primary">GB</span>
+<div>
+<div class="font-headline font-bold text-primary">GBP</div>
+<div class="text-[0.6875rem] text-on-surface-variant">British Pound</div>
+</div>
+</td>
+<td class="px-6 py-6 font-headline font-bold text-primary">354.12</td>
+<td class="px-6 py-6 font-headline font-bold text-primary">357.25</td>
+<td class="px-6 py-6 text-secondary text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +0.85
+                            </td>
+<td class="px-6 py-6">
+<div class="w-24 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[78%]"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- SEO Article Section -->
+<article class="bg-surface-container-low p-12 lg:p-20 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-surface-container-high -skew-x-12 translate-x-1/2 hidden lg:block opacity-30"></div>
+<div class="relative z-10 max-w-4xl">
+<header class="mb-12">
+<h2 class="font-headline font-extrabold text-4xl text-primary tracking-tight mb-8">Dollar Rate in Pakistan Today: Market Analysis &amp; Trends</h2>
+<div class="flex items-center gap-6 text-on-surface-variant text-sm font-body">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">calendar_month</span> October 24, 2024</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">person</span> Financial Editorial Team</span>
+</div>
+</header>
+<div class="font-body text-on-surface-variant leading-relaxed space-y-8 text-lg">
+<p>
+                        The exchange rate dynamics in Pakistan represent a complex intersection of fiscal policy, international trade balances, and geopolitical stability. As of today, the PKR has shown a resilient posture against the USD, navigating through a landscape defined by IMF review cycles and local economic reforms.
+                    </p>
+<h3 class="font-headline font-bold text-2xl text-primary pt-4">Key Market Drivers</h3>
+<p>
+                        Several critical factors are currently dictating the pace of the Pakistani Rupee. The primary catalyst remains the <strong>External Debt Obligations</strong>. With significant repayments scheduled, the demand for greenbacks often spikes in the interbank market, creating downward pressure on the PKR.
+                    </p>
+<ul class="space-y-4 pt-4">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+<span><strong>Monetary Policy:</strong> The State Bank of Pakistan's stance on interest rates remains a pivotal anchor for inflation control and currency valuation.</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+<span><strong>Current Account Deficit:</strong> Narrowing trade gaps have provided much-needed breathing room for the local currency in recent quarters.</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary shrink-0">check_circle</span>
+<span><strong>Worker Remittances:</strong> Inflows from the overseas Pakistani diaspora remain the strongest pillar of support for the PKR's stability.</span>
+</li>
+</ul>
+<h3 class="font-headline font-bold text-2xl text-primary pt-4">Expert Insights &amp; Outlook</h3>
+<p>
+                        Market analysts at XtraProfit suggest that while the immediate outlook is stable, investors should maintain a cautious approach. The "Sovereign Analyst" perspective emphasizes monitoring the <strong>Real Effective Exchange Rate (REER)</strong> rather than just nominal values. 
+                    </p>
+<p>
+                        As the country moves towards further digitalization of its financial sector, the gap between open market and interbank rates is expected to converge, leading to a more transparent and efficient currency ecosystem. For traders and businesses, hedging against potential volatility remains a prudent strategy in the current fiscal year.
+                    </p>
+</div>
+<div class="mt-16 p-8 border-l-4 border-tertiary-fixed bg-primary text-on-primary">
+<h4 class="font-headline font-bold text-xl mb-2">Analyst Tip</h4>
+<p class="font-body text-on-primary-container">"Monitor the Friday closing rates with extra scrutiny. Historically, weekend sentiment often sets the tone for Monday's opening session in the Pakistani Forex market."</p>
+</div>
+</div>
+</article>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f3f4f5] dark:bg-slate-900 w-full py-12 px-8 grid grid-cols-1 md:grid-cols-2 gap-8 w-full border-t border-slate-200 dark:border-slate-800">
+<div>
+<span class="font-['Manrope'] font-bold text-[#00193c] dark:text-slate-100 text-xl block mb-4">XtraProfit</span>
+<p class="text-slate-500 dark:text-slate-400 font-['Inter'] text-xs uppercase tracking-widest leading-relaxed max-w-xs">
+                © 2024 XtraProfit. All rights reserved. Sovereign Financial Analysis.
+            </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-3">
+<a class="text-slate-500 dark:text-slate-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-[#caf300] transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-[#caf300] transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-slate-500 dark:text-slate-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-[#caf300] transition-colors opacity-80 hover:opacity-100" href="#">Market Data Disclosure</a>
+<a class="text-slate-500 dark:text-slate-400 font-['Inter'] text-xs uppercase tracking-widest hover:text-[#caf300] transition-colors opacity-80 hover:opacity-100" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>

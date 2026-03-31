@@ -1,0 +1,124 @@
+import React, { useState } from "react";
+import { ArrowRightLeft, TrendingUp, History, ShieldCheck, Zap, Info, ArrowUpRight } from "lucide-react";
+import { cn } from "../lib/utils";
+
+const Profit = () => {
+    const [cost, setCost] = useState("1000");
+    const [price, setPrice] = useState("1500");
+    const [quantity, setQuantity] = useState("10");
+
+    const totalCost = parseFloat(cost) * parseFloat(quantity);
+    const totalRevenue = parseFloat(price) * parseFloat(quantity);
+    const profit = totalRevenue - totalCost;
+    const margin = (profit / totalRevenue) * 100;
+
+    return (
+        <div className="bg-[#f8f9fa] min-h-screen pt-32 pb-40 px-8">
+            <div className="max-w-7xl mx-auto">
+                <header className="mb-20">
+                    <div className="inline-flex items-center gap-3 bg-[#00193c] px-5 py-2.5 rounded-full mb-10 shadow-2xl">
+                        <div className="w-2 h-2 bg-[#caf300] rounded-full animate-pulse shadow-[0_0_10px_#caf300]"></div>
+                        <span className="text-[0.625rem] font-black uppercase tracking-[0.3em] text-[#caf300] font-label">Liquidity Realization Desk • Active Terminal</span>
+                    </div>
+                    <h1 className="font-headline font-black text-5xl lg:text-8xl tracking-tightest text-[#00193c] leading-[0.85] max-w-4xl">
+                        Fiscal <br /><span className="text-[#29695b]">Realization Hub.</span>
+                    </h1>
+                    <p className="mt-10 text-[#64748b] text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed">
+                        High-precision institutional profit and margin forecasting. Analyze your capitalization strategies with absolute technical clarity.
+                    </p>
+                </header>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    {/* Calculator Field Matrix */}
+                    <div className="lg:col-span-8 bg-white border border-black/5 p-12 rounded-[3.5rem] shadow-3xl overflow-hidden relative group">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#caf300]/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-[#caf300]/10 transition-all"></div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10">
+                            {[
+                                { label: "Unit Acquisition Cost", value: cost, setter: setCost, icon: <Zap size={18} />, prefix: "$" },
+                                { label: "Target Realization Price", value: price, setter: setPrice, icon: <TrendingUp size={18} />, prefix: "$" },
+                                { label: "Inventory Allocation", value: quantity, setter: setQuantity, icon: <History size={18} />, prefix: "#" }
+                            ].map((field, i) => (
+                                <div key={i} className="space-y-4">
+                                    <label className="flex items-center gap-3 text-[0.6875rem] font-black text-[#00193c] uppercase tracking-[0.4em] ml-2">
+                                        <div className="text-[#29695b]">{field.icon}</div>
+                                        {field.label}
+                                    </label>
+                                    <div className="relative group/input flex items-center">
+                                        <span className="absolute left-8 text-xl font-headline font-black text-[#64748b] group-hover/input:text-[#00193c] transition-colors">{field.prefix}</span>
+                                        <input
+                                            type="number"
+                                            value={field.value}
+                                            onChange={(e) => field.setter(e.target.value)}
+                                            className="w-full bg-[#f8f9fa] border-none rounded-[1.5rem] p-8 pl-14 font-headline font-black text-2xl lg:text-3xl text-[#00193c] focus:ring-4 focus:ring-[#caf300]/20 transition-all outline-none"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-16 pt-16 border-t border-black/5 relative z-10">
+                            <div className="flex flex-col gap-3">
+                                <p className="text-[0.625rem] font-black text-[#64748b] uppercase tracking-[0.4em] ml-1">Capitalization Efficiency</p>
+                                <div className="flex items-center gap-5">
+                                    <div className="p-4 bg-[#00193c] rounded-[1.25rem] text-[#caf300] shadow-xl">
+                                        <ShieldCheck size={24} />
+                                    </div>
+                                    <p className="text-[#00193c] font-medium max-w-sm leading-relaxed text-sm">
+                                        Your margins are currently optimized at <span className="font-black text-[#29695b]">{margin.toFixed(1)}%</span> against the target benchmark.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Result Sidebar */}
+                    <div className="lg:col-span-4 h-full">
+                        <section className="bg-[#00193c] p-16 rounded-[3.5rem] text-white relative overflow-hidden h-full flex flex-col justify-between shadow-3xl border border-white/5">
+                            <div className="absolute top-0 right-0 w-2/3 h-full bg-[#caf300]/5 blur-[150px] pointer-events-none"></div>
+
+                            <div className="relative z-10 w-full mb-16">
+                                <div className="space-y-16">
+                                    <div className="group">
+                                        <p className="text-[0.6875rem] font-black text-[#caf300] uppercase tracking-[0.5em] mb-4 opacity-100 group-hover:translate-x-2 transition-transform duration-500">Gross Realization</p>
+                                        <div className="flex items-baseline gap-3">
+                                            <span className="text-xl font-headline font-black text-white/40">$</span>
+                                            <h2 className="text-6xl font-headline font-black text-white tracking-tightest leading-none">
+                                                {profit.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+                                            </h2>
+                                        </div>
+                                    </div>
+
+                                    <div className="group">
+                                        <p className="text-[0.6875rem] font-black text-[#29695b] uppercase tracking-[0.5em] mb-4 group-hover:text-[#caf300] transition-colors group-hover:translate-x-2 transition-transform duration-500">Yield Margin</p>
+                                        <div className="flex items-baseline gap-3">
+                                            <h2 className="text-6xl font-headline font-black text-[#caf300] tracking-tightest leading-none">
+                                                {margin.toFixed(1)}
+                                            </h2>
+                                            <span className="text-2xl font-headline font-black text-[#caf300]/40">%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-auto bg-white/5 p-10 rounded-[2.5rem] border border-white/5 relative z-10 w-full hover:bg-white/10 transition-all cursor-default">
+                                <div className="flex items-center gap-4 mb-6 text-[0.625rem] font-black uppercase tracking-[0.4em] font-headline text-white/50">
+                                    <Info size={18} className="text-[#caf300]" />
+                                    Institutional Status
+                                </div>
+                                <div className="space-y-5">
+                                    <div className="flex justify-between items-center px-2 py-1"><span className="text-xs font-bold text-white/30 uppercase tracking-[0.1em]">Total Cost</span><span className="font-headline font-black text-lg text-white">${totalCost.toLocaleString()}</span></div>
+                                    <div className="flex justify-between items-center px-2 py-1"><span className="text-xs font-bold text-white/30 uppercase tracking-[0.1em]">Total Revenue</span><span className="font-headline font-black text-lg text-white">${totalRevenue.toLocaleString()}</span></div>
+                                    <div className="h-[2px] bg-white/10 rounded-full w-full"></div>
+                                    <div className="flex justify-between items-center px-2 py-1"><span className="text-xs font-bold text-[#caf300] uppercase tracking-[0.1em]">Sovereign Yield</span><span className="font-headline font-black text-2xl text-[#caf300]">+{(margin).toFixed(1)}%</span></div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Profit;

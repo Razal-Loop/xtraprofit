@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#e1e3e4",
+              "tertiary": "#151c00",
+              "on-tertiary-fixed": "#171e00",
+              "on-secondary-fixed": "#00201a",
+              "on-background": "#191c1d",
+              "secondary-container": "#acedda",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-surface-variant": "#43474f",
+              "inverse-primary": "#abc7ff",
+              "on-primary-fixed": "#001b3f",
+              "primary": "#00193c",
+              "outline-variant": "#c4c6d1",
+              "on-secondary-container": "#2e6d5f",
+              "surface-dim": "#d9dadb",
+              "on-primary": "#ffffff",
+              "surface-tint": "#3e5e95",
+              "surface-container": "#edeeef",
+              "background": "#f8f9fa",
+              "tertiary-fixed": "#caf300",
+              "primary-container": "#002d62",
+              "surface-container-high": "#e7e8e9",
+              "on-primary-fixed-variant": "#24467c",
+              "inverse-on-surface": "#f0f1f2",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "on-tertiary-container": "#85a000",
+              "on-surface": "#191c1d",
+              "outline": "#747781",
+              "error-container": "#ffdad6",
+              "surface": "#f8f9fa",
+              "on-primary-container": "#7796d1",
+              "tertiary-container": "#283200",
+              "primary-fixed-dim": "#abc7ff",
+              "primary-fixed": "#d7e2ff",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f3f4f5",
+              "on-tertiary-fixed-variant": "#3e4c00",
+              "surface-bright": "#f8f9fa",
+              "secondary": "#29695b",
+              "on-secondary-fixed-variant": "#065043",
+              "tertiary-fixed-dim": "#b0d500",
+              "surface-container-highest": "#e1e3e4",
+              "secondary-fixed-dim": "#94d3c1",
+              "secondary-fixed": "#afefdd"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0px 24px 48px rgba(25, 28, 29, 0.06);
+        }
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-tertiary-fixed selection:text-tertiary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-[#00193c] dark:text-white font-headline">XtraProfit Dev</div>
+<div class="hidden md:flex items-center space-x-8 font-headline font-medium text-sm tracking-tight">
+<a class="text-[#00193c] dark:text-[#caf300] font-bold border-b-2 border-[#00193c] dark:border-[#caf300] pb-1" href="#">Services</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00193c] dark:hover:text-white transition-colors" href="#">Portfolio</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00193c] dark:hover:text-white transition-colors" href="#">Process</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#00193c] dark:hover:text-white transition-colors" href="#">Testimonials</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-md font-headline font-medium text-sm transition-transform scale-95 active:opacity-80">
+                Start Project
+            </button>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-surface py-24 md:py-32">
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="flex flex-col md:flex-row items-center gap-16">
+<div class="md:w-3/5">
+<span class="inline-block font-label text-xs tracking-wider uppercase bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-sm mb-6 font-bold">Available for Hire</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-primary leading-tight mb-8 tracking-tighter">
+                            Need a Website or Web App? I Build <span class="text-primary-container italic">Fast &amp; Affordable</span> Solutions
+                        </h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-light">
+                            From simple websites to full web apps — I help you grow online with the precision of a sovereign analyst.
+                        </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 rounded-md font-headline font-bold text-base transition-all duration-200 editorial-shadow">
+                                Hire Me
+                            </button>
+<button class="border border-outline-variant hover:bg-surface-container-high text-primary px-8 py-4 rounded-md font-headline font-bold text-base transition-all duration-200">
+                                Get Free Quote
+                            </button>
+</div>
+</div>
+<div class="md:w-2/5 relative">
+<div class="aspect-square rounded-full bg-gradient-to-br from-primary to-primary-container opacity-10 absolute -top-10 -right-10 w-full h-full blur-3xl"></div>
+<img alt="Modern Development Workspace" class="rounded-xl shadow-2xl relative z-10 w-full object-cover aspect-[4/5]" data-alt="Modern minimalist workspace with a laptop showing code, clean desk, soft natural lighting and a coffee cup on the side" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnqCfezX_75FXj4RxzEuaVNcoegsdjIvk07HmE36elzyuTj_MIOU4hPby2p6lLZxp8JYP-P_vRZuAjVnqLnBOmhUZ3OPowJ0pJlOvB8SOp7_cEFWoe0ILOLKcisPqKJqU8YhEGdFtrvIyb2B06AVjGMHWOk4sE99tlThm0HF-K8rlloKHHjQnAaLgwAN6F2DNQRXLlNpRuV_eGAcr5l-vf0klBZQq5gXTCOrUd_fa0AUBjcBXT36Iy7PpEa8v4hGzkOUypAuFK0yA"/>
+</div>
+</div>
+</div>
+</section>
+<!-- About / Skills Section -->
+<section class="bg-surface-container-low py-20">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
+<div class="md:col-span-5">
+<h2 class="font-headline text-sm font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-4">About XtraProfit Dev</h2>
+<p class="font-headline text-4xl font-extrabold text-primary leading-tight mb-6">
+                            Freelance Web Developer
+                        </p>
+<p class="text-on-surface-variant leading-relaxed">
+                            A dedicated architect of the digital web, focusing on performance, scalability, and conversion-driven design for sovereign businesses.
+                        </p>
+</div>
+<div class="md:col-span-7 flex flex-wrap gap-3">
+<div class="bg-surface-container-lowest px-6 py-3 rounded-sm font-headline font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="html">html</span> HTML
+                        </div>
+<div class="bg-surface-container-lowest px-6 py-3 rounded-sm font-headline font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="css">css</span> CSS
+                        </div>
+<div class="bg-surface-container-lowest px-6 py-3 rounded-sm font-headline font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="javascript">javascript</span> JavaScript
+                        </div>
+<div class="bg-surface-container-lowest px-6 py-3 rounded-sm font-headline font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="api">api</span> APIs
+                        </div>
+<div class="bg-surface-container-lowest px-6 py-3 rounded-sm font-headline font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="web">web</span> Web apps
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Bento Grid -->
+<section class="bg-surface py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16">
+<h2 class="font-headline text-5xl font-extrabold text-primary mb-4 tracking-tighter">Core Services</h2>
+<p class="text-on-surface-variant max-w-2xl font-light text-lg">Precision engineering for your digital presence. No bloat, just performance.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Web Development -->
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-lg group hover:bg-gradient-to-br hover:from-white hover:to-surface-container-low transition-all duration-300">
+<div class="w-12 h-12 bg-primary-container rounded-sm flex items-center justify-center mb-6 text-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-3">Web Development</h3>
+<p class="text-on-surface-variant mb-6 font-body">Crafting high-speed business websites and optimized landing pages that convert visitors into loyal clients.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-sm font-headline font-semibold text-primary">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Business Websites
+                            </li>
+<li class="flex items-center gap-2 text-sm font-headline font-semibold text-primary">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                High-Conversion Landing Pages
+                            </li>
+</ul>
+</div>
+<!-- Web Apps -->
+<div class="md:col-span-2 bg-surface-container-low p-8 rounded-lg group hover:bg-surface-container-high transition-all duration-300">
+<div class="w-12 h-12 bg-primary rounded-sm flex items-center justify-center mb-6 text-on-primary">
+<span class="material-symbols-outlined" data-icon="dashboard_customize">dashboard_customize</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-3">Web Apps</h3>
+<p class="text-on-surface-variant mb-6 font-body">Building scalable custom tools and interactive dashboards to automate your business workflow.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-sm font-headline font-semibold text-primary">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Custom Management Tools
+                            </li>
+<li class="flex items-center gap-2 text-sm font-headline font-semibold text-primary">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Real-time Data Dashboards
+                            </li>
+</ul>
+</div>
+<!-- API Integration -->
+<div class="md:col-span-2 bg-surface-container-low p-8 rounded-lg group hover:bg-surface-container-high transition-all duration-300">
+<div class="w-12 h-12 bg-secondary rounded-sm flex items-center justify-center mb-6 text-on-secondary">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-3">API Integration</h3>
+<p class="text-on-surface-variant mb-6 font-body">Seamlessly connecting your platform with payment systems and third-party data providers.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-sm font-headline font-semibold text-primary">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Stripe &amp; PayPal Integration
+                            </li>
+<li class="flex items-center gap-2 text-sm font-headline font-semibold text-primary">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                External Data Fetching
+                            </li>
+</ul>
+</div>
+<!-- Bug Fixing -->
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-lg group hover:bg-gradient-to-br hover:from-white hover:to-surface-container-low transition-all duration-300">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-sm flex items-center justify-center mb-6 text-on-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-3">Bug Fixing</h3>
+<p class="text-on-surface-variant mb-6 font-body">Eliminating technical debt. I fix critical errors and optimize for peak performance speed.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-sm font-headline font-semibold text-primary">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Error Resolution
+                            </li>
+<li class="flex items-center gap-2 text-sm font-headline font-semibold text-primary">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Speed Optimization (Lighthouse)
+                            </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Section -->
+<section class="bg-primary text-on-primary py-24">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<h2 class="font-headline text-4xl font-extrabold mb-8">Ready to elevate your digital assets?</h2>
+<div class="flex justify-center gap-6">
+<button class="bg-tertiary-fixed text-on-tertiary-fixed px-10 py-5 rounded-md font-headline font-extrabold text-lg hover:brightness-110 transition-all">
+                        Start Project
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f3f4f5] dark:bg-slate-900 w-full py-12 border-t border-slate-200 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-6">
+<div class="font-['Manrope'] font-extrabold text-[#00193c] dark:text-white">XtraProfit Dev</div>
+<div class="font-['Inter'] text-xs tracking-wider uppercase flex gap-8 text-slate-500 dark:text-slate-500">
+<a class="hover:text-[#caf300] transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-[#caf300] transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-[#caf300] transition-colors" href="#">Consultation</a>
+<a class="hover:text-[#caf300] transition-colors" href="#">LinkedIn</a>
+</div>
+<div class="text-[#00193c] dark:text-slate-300 font-['Inter'] text-xs tracking-wider uppercase">
+                © 2024 XtraProfit Dev. Built for The Sovereign Analyst.
+            </div>
+</div>
+</footer>
+</body></html>
