@@ -7,32 +7,44 @@ import { cn } from '../lib/utils';
 const Home = () => {
     const features = [
         {
-            title: 'Real-Time FX Matrix',
-            desc: 'Precision currency conversion with live exchange benchmarks for 160+ assets.',
+            title: 'FX Parity Matrix',
+            desc: 'High-precision currency conversion with live exchange benchmarks for 170+ global assets.',
             icon: <Globe className="text-[#29695b]" size={20} />,
             link: '/currency'
         },
         {
-            title: 'Profit Forecasting',
-            desc: 'High-density fiscal realization calculators for strategic business projections.',
+            title: 'EMI Amortization',
+            desc: 'Institutional debt modeling and monthly obligation analysis for strategic capitalization.',
+            icon: <ShieldCheck className="text-[#29695b]" size={20} />,
+            link: '/emi'
+        },
+        {
+            title: 'Yield Forecasting',
+            desc: 'Compound growth projections and wealth realization modeling for long-term assets.',
+            icon: <Zap className="text-[#29695b]" size={20} />,
+            link: '/investment'
+        },
+        {
+            title: 'Profit Realization',
+            desc: 'Strategic fiscal forecasting for unit-level margins and gross business capitalization.',
             icon: <Calculator className="text-[#29695b]" size={20} />,
             link: '/profit'
         },
         {
             title: 'Metal Analytics',
-            desc: 'Institutional-grade trackers for Gold, Silver, and high-value metallurgy assets.',
+            desc: 'Real-time spot price benchmarks for Gold, Silver, and strategic precious metallurgy.',
             icon: <BarChart3 className="text-[#29695b]" size={20} />,
             link: '/metals'
         },
         {
-            title: 'Crypto Tracking',
-            desc: 'Real-time quantum-level sentiment and price action for the digital asset ecosystem.',
-            icon: <ShieldCheck className="text-[#29695b]" size={20} />,
+            title: 'Crypto Matrix',
+            desc: 'Live digital asset tracking with high-density price action and market sentiment feeds.',
+            icon: <Code2 className="text-[#29695b]" size={20} />,
             link: '/crypto'
         },
         {
-            title: 'Market Realization',
-            desc: 'Institutional intelligence and sentiment feeds for global sovereign realization.',
+            title: 'Market Intelligence',
+            desc: 'Real-time news feeds and sentiment logic from global financial intelligence nodes.',
             icon: <Newspaper className="text-[#29695b]" size={20} />,
             link: '/news'
         }
@@ -117,7 +129,7 @@ const Home = () => {
                             Institutional logic engines for real-time asset navigation.
                         </p>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-10">
                         {features.map((f, i) => (
                             <Link
                                 key={i}

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../lib/utils';
-import { Menu, X, Terminal, ArrowUpRight } from 'lucide-react';
+import { Menu, X, Terminal, ArrowUpRight, ChevronDown, Globe, Calculator, ShieldCheck, Zap, BarChart3, Newspaper, Code2 } from 'lucide-react';
 
 const Header = () => {
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isToolsOpen, setIsToolsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -16,12 +17,11 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close mobile menu on route change
     useEffect(() => {
         setIsMenuOpen(false);
+        setIsToolsOpen(false);
     }, [location.pathname]);
 
-    // Prevent body scroll when mobile menu is open
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -31,16 +31,17 @@ const Header = () => {
         return () => { document.body.style.overflow = ''; };
     }, [isMenuOpen]);
 
-    const navLinks = [
-        { name: 'FX', path: '/currency' },
-        { name: 'EMI', path: '/emi' },
-        { name: 'Yield', path: '/investment' },
-        { name: 'Profit', path: '/profit' },
-        { name: 'Crypto', path: '/crypto' },
-        { name: 'Metals', path: '/metals' },
-        { name: 'News', path: '/news' },
-        { name: 'Services', path: '/services' },
+    const toolLinks = [
+        { name: 'FX Parity', path: '/currency', icon: <Globe size={14} />, desc: 'Live Currency Conversion' },
+        { name: 'EMI Desk', path: '/emi', icon: <ShieldCheck size={14} />, desc: 'Debt Amortization' },
+        { name: 'Yield Forecast', path: '/investment', icon: <Zap size={14} />, desc: 'Compound Growth' },
+        { name: 'Profit Logic', path: '/profit', icon: <Calculator size={14} />, desc: 'Margin Benchmarking' },
+        { name: 'Crypto Matrix', path: '/crypto', icon: <Code2 size={14} />, desc: 'Live Asset Tracking' },
+        { name: 'Metal Analytics', path: '/metals', icon: <BarChart3 size={14} />, desc: 'Precious Metals Spot' },
+        { name: 'Market News', path: '/news', icon: <Newspaper size={14} />, desc: 'Institutional Intel' },
     ];
+
+    const isToolActive = toolLinks.some(link => location.pathname === link.path);
 
     return (
         <header
@@ -62,22 +63,71 @@ const Header = () => {
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden lg:flex items-center gap-4 sm:gap-6">
-                    <div className="flex items-center gap-3 sm:gap-5 bg-black/5 px-4 py-2 rounded-full border border-black/5">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                to={link.path}
+                <div className="hidden lg:flex items-center gap-6">
+                    <div className="flex items-center gap-2 bg-black/5 p-1.5 rounded-full border border-black/5">
+                        {/* Tools Dropdown Trigger */}
+                        <div
+                            className="relative"
+                            onMouseEnter={() => setIsToolsOpen(true)}
+                            onMouseLeave={() => setIsToolsOpen(false)}
+                        >
+                            <button
                                 className={cn(
-                                    "text-[0.625rem] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:text-[#00193c]",
-                                    location.pathname === link.path
-                                        ? "text-[#00193c]"
-                                        : "text-[#64748b]"
+                                    "flex items-center gap-2 px-4 py-2 text-[0.625rem] font-black uppercase tracking-[0.2em] transition-all duration-300 rounded-full",
+                                    isToolActive || isToolsOpen
+                                        ? "bg-[#00193c] text-white"
+                                        : "text-[#64748b] hover:text-[#00193c] hover:bg-black/5"
                                 )}
                             >
-                                {link.name}
-                            </Link>
-                        ))}
+                                Tools <ChevronDown size={14} className={cn("transition-transform duration-300", isToolsOpen && "rotate-180")} />
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            <div className={cn(
+                                "absolute top-full left-0 mt-2 w-64 bg-white rounded-[1.5rem] shadow-2xl border border-black/5 p-3 grid grid-cols-1 gap-1 transition-all duration-300 origin-top-left",
+                                isToolsOpen
+                                    ? "opacity-100 scale-100 pointer-events-auto"
+                                    : "opacity-0 scale-95 pointer-events-none"
+                            )}>
+                                {toolLinks.map((tool) => (
+                                    <Link
+                                        key={tool.name}
+                                        to={tool.path}
+                                        className={cn(
+                                            "flex items-center gap-3 p-3 rounded-[1rem] transition-all group/tool",
+                                            location.pathname === tool.path
+                                                ? "bg-[#caf300]/10 text-[#00193c]"
+                                                : "hover:bg-[#f8f9fa] text-[#64748b] hover:text-[#00193c]"
+                                        )}
+                                    >
+                                        <div className={cn(
+                                            "w-8 h-8 rounded-lg flex items-center justify-center transition-all",
+                                            location.pathname === tool.path
+                                                ? "bg-[#00193c] text-[#caf300]"
+                                                : "bg-black/5 text-[#29695b] group-hover/tool:bg-[#00193c] group-hover/tool:text-[#caf300]"
+                                        )}>
+                                            {tool.icon}
+                                        </div>
+                                        <div>
+                                            <p className="text-[0.6rem] font-black uppercase tracking-widest leading-none mb-1">{tool.name}</p>
+                                            <p className="text-[0.55rem] font-medium opacity-60 leading-none">{tool.desc}</p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+
+                        <Link
+                            to="/services"
+                            className={cn(
+                                "px-4 py-2 text-[0.625rem] font-black uppercase tracking-[0.2em] transition-all duration-300 rounded-full",
+                                location.pathname === '/services'
+                                    ? "bg-[#00193c] text-white"
+                                    : "text-[#64748b] hover:text-[#00193c] hover:bg-black/5"
+                            )}
+                        >
+                            Services
+                        </Link>
                     </div>
                 </div>
 
@@ -100,29 +150,53 @@ const Header = () => {
                 )}
                 style={{ top: scrolled ? '52px' : '60px' }}
             >
-                <div className="flex-1 overflow-y-auto p-6 sm:p-8 flex flex-col gap-4 border-t border-black/5">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            to={link.path}
-                            onClick={() => setIsMenuOpen(false)}
-                            className={cn(
-                                "text-xl sm:text-2xl font-black font-headline tracking-tighter py-3 border-b border-black/5",
-                                location.pathname === link.path
-                                    ? "text-[#00193c]"
-                                    : "text-[#cbd5e1]"
-                            )}
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                    <div className="mt-6">
+                <div className="flex-1 overflow-y-auto p-6 sm:p-8 flex flex-col gap-6 border-t border-black/5">
+                    {/* Mobile Tools Section */}
+                    <div>
+                        <p className="text-[0.6rem] font-black uppercase tracking-[0.4em] text-[#cbd5e1] mb-6 pl-2">Utility Stack</p>
+                        <div className="grid grid-cols-1 gap-2">
+                            {toolLinks.map((tool) => (
+                                <Link
+                                    key={tool.name}
+                                    to={tool.path}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className={cn(
+                                        "flex items-center gap-4 p-4 rounded-[1.25rem] transition-all border",
+                                        location.pathname === tool.path
+                                            ? "bg-[#00193c] text-white border-transparent shadow-xl"
+                                            : "bg-[#f8f9fa] text-[#64748b] border-black/5"
+                                    )}
+                                >
+                                    <div className={cn(
+                                        "w-10 h-10 rounded-xl flex items-center justify-center",
+                                        location.pathname === tool.path ? "bg-[#caf300] text-[#00193c]" : "bg-white text-[#29695b]"
+                                    )}>
+                                        {tool.icon}
+                                    </div>
+                                    <span className="text-sm font-black uppercase tracking-widest">{tool.name}</span>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+
+                    <Link
+                        to="/services"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={cn(
+                            "text-xl sm:text-2xl font-black font-headline tracking-tighter py-6 border-t border-black/5",
+                            location.pathname === '/services' ? "text-[#00193c]" : "text-[#cbd5e1]"
+                        )}
+                    >
+                        Services Desk
+                    </Link>
+
+                    <div className="mt-auto">
                         <Link
                             to="/services"
                             onClick={() => setIsMenuOpen(false)}
-                            className="w-full bg-[#00193c] text-white py-4 sm:py-5 rounded-[1.25rem] text-[0.625rem] font-black uppercase tracking-[0.4em] flex items-center justify-center gap-3 shadow-xl"
+                            className="w-full bg-[#00193c] text-white py-5 rounded-[1.5rem] text-[0.625rem] font-black uppercase tracking-[0.4em] flex items-center justify-center gap-3 shadow-xl"
                         >
-                            Contact Desk <ArrowUpRight size={16} className="text-[#caf300]" />
+                            Hire Engineering Desk <ArrowUpRight size={16} className="text-[#caf300]" />
                         </Link>
                     </div>
                 </div>
