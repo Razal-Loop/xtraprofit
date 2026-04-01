@@ -60,39 +60,39 @@ const Services = () => {
     const servicesGrid = [
         {
             title: 'Web Engineering',
-            desc: 'Crafting high-speed business websites and ultra-optimized landing pages designed for scale.',
+            desc: 'Crafting high-speed business websites and ultra-optimized landing pages designed for market authority.',
             icon: <Globe className="text-[#29695b]" size={20} />,
-            features: ['Institutional Scale', 'Performance Core'],
+            features: ['Market Velocity', 'Performance Core'],
         },
         {
-            title: 'Web Applications',
-            desc: 'Building scalable custom tools and interactive dashboards to automate your business workflow.',
+            title: 'Custom Web Apps',
+            desc: 'Building scalable SaaS platforms and interactive dashboards to automate any industry workflow.',
             icon: <Laptop className="text-[#29695b]" size={20} />,
-            features: ['Custom CRM/ERP Solutions', 'Real-time Databasing'],
+            features: ['Custom CRM/ERP', 'Business Logic'],
         },
         {
             title: 'Mobile Ecosystems',
-            desc: 'Native-level solutions for iOS and Android. High-fidelity mobile experiences that extend reach.',
+            desc: 'Native-level solutions for iOS and Android. High-fidelity mobile experiences for modern brands.',
             icon: <Smartphone className="text-[#29695b]" size={20} />,
-            features: ['Native Performance', 'Market Penetration'],
+            features: ['Native Scale', 'UX Excellence'],
         },
         {
             title: 'AI Logic Engines',
-            desc: 'Integrating Large Language Models and custom logic into business apps to amplify intelligence.',
+            desc: 'Integrating Large Language Models and custom automation into existing systems to amplify intelligence.',
             icon: <Cpu className="text-[#29695b]" size={20} />,
-            features: ['LLM Implementation', 'Automated Intelligence'],
+            features: ['LLM Orchestration', 'Automated Flows'],
         },
         {
-            title: 'ERP Architecture',
-            desc: 'Enterprise systems designed for operational longevity, asset tracking, and full scalability.',
+            title: 'Enterprise Software',
+            desc: 'End-to-end systems designed for operational longevity, including inventory, logistics, and data hubs.',
             icon: <Database className="text-[#29695b]" size={20} />,
-            features: ['Asset Management', 'Process Engineering'],
+            features: ['System Integration', 'Infinite Scale'],
         },
         {
-            title: 'Middleware & APIs',
-            desc: 'Robust connective tissue for modern systems. Secure APIs to bridge the gap between intelligence and UI.',
+            title: 'API Engineering',
+            desc: 'Robust connective tissue for modern enterprises. Secure APIs to unify fragmented business data.',
             icon: <Network className="text-[#29695b]" size={20} />,
-            features: ['Secure Data Bridging', 'Institutional APIs'],
+            features: ['Zero-Trust Security', 'High-Density APIs'],
         }
     ];
 
@@ -135,10 +135,10 @@ const Services = () => {
                                 <span className="text-[0.5625rem] sm:text-[0.625rem] font-black tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[#caf300]">Sovereign Tech Desk</span>
                             </div>
                             <h1 className="font-headline text-3xl sm:text-5xl lg:text-7xl font-black text-[#00193c] leading-[0.85] mb-6 sm:mb-10 tracking-tightest text-left">
-                                Engineering <br /><span className="text-[#29695b]">Digital Sovereignty.</span>
+                                Engineering <br /><span className="text-[#29695b]">Digital Ecosystems.</span>
                             </h1>
                             <p className="text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl mb-8 sm:mb-12 font-medium leading-relaxed text-left">
-                                Deploying <span className="font-black text-[#00193c]">institutional-grade</span> software systems and premium dashboard logic for modern capital stakeholders.
+                                Deploying <span className="font-black text-[#00193c]">high-performance</span> web and mobile applications for businesses across all sectors. We architect bespoke digital solutions designed for absolute scale.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-10">
                                 <button
@@ -194,7 +194,7 @@ const Services = () => {
             <section className="py-16 sm:py-24 lg:py-48 bg-[#f8f9fa] overflow-hidden text-left">
                 <div className="max-w-7xl mx-auto px-4 sm:px-8">
                     <div className="max-w-4xl mb-12 sm:mb-24">
-                        <h2 className="font-headline text-3xl sm:text-5xl lg:text-7xl font-black text-[#00193c] mb-6 sm:mb-10 tracking-tightest leading-[0.9]">Design. Code. <br /><span className="text-[#29695b] italic">Architect Profit.</span></h2>
+                        <h2 className="font-headline text-3xl sm:text-5xl lg:text-7xl font-black text-[#00193c] mb-6 sm:mb-10 tracking-tightest leading-[0.9]">Design. Code. <br /><span className="text-[#29695b] italic">Architect Growth.</span></h2>
                         <p className="text-[#64748b] text-base sm:text-xl lg:text-2xl font-medium leading-relaxed max-w-2xl">
                             Our development workflow is centered on <span className="font-black text-[#00193c]">absolute technical precision</span> and pixel-perfect scalability.
                         </p>
