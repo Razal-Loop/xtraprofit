@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Globe, Calculator, BarChart3, ShieldCheck, Zap, Laptop, Smartphone, Code2, Layers, Briefcase, ExternalLink, Github, Linkedin, CheckCircle2, Newspaper } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Globe, Calculator, BarChart3, ShieldCheck, Zap, Laptop, Smartphone, Code2, Layers, Briefcase, ExternalLink, Github, Linkedin, CheckCircle2, Newspaper } from 'lucide-react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
