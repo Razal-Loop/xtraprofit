@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
 const Home = () => {
-    const features = [
+    const tools = [
         {
             title: 'FX Parity Matrix',
             desc: 'High-precision currency conversion with live exchange benchmarks for 170+ global assets.',
@@ -29,7 +29,10 @@ const Home = () => {
             desc: 'Strategic fiscal forecasting for unit-level margins and gross business capitalization.',
             icon: <Calculator className="text-[#29695b]" size={20} />,
             link: '/profit'
-        },
+        }
+    ];
+
+    const intelligence = [
         {
             title: 'Metal Analytics',
             desc: 'Real-time spot price benchmarks for Gold, Silver, and strategic precious metallurgy.',
@@ -93,8 +96,8 @@ const Home = () => {
                             </div>
 
                             {/* Disclaimer */}
-                            <div className="flex items-start gap-3 sm:gap-4 max-w-xl mx-auto lg:mx-0 p-4 sm:p-6 bg-[#00193c]/5 border-l-4 border-[#29695b] rounded-r-2xl">
-                                <ShieldCheck size={18} className="text-[#29695b] mt-1 shrink-0 sm:w-5 sm:h-5" />
+                            <div className="flex items-start gap-3 sm:gap-4 max-w-xl mx-auto lg:mx-0 p-4 sm:p-6 bg-[#00193c]/5 border-l-4 border-[#29695b] rounded-r-2xl text-left">
+                                <ShieldCheck size={18} className="text-[#29695b] mt-1 shrink-0 sm:w-5 sm:h-5 text-left" />
                                 <p className="text-[0.625rem] sm:text-[0.75rem] font-bold leading-normal text-[#64748b] uppercase tracking-wider text-left">
                                     <span className="text-[#00193c] font-black">XtraProfit is a Software Engineering Desk.</span> We provide high-fidelity visualization tools and utility calculators. We do <span className="underline decoration-[#caf300] decoration-2">NOT</span> provide financial advice or brokerage services.
                                 </p>
@@ -129,12 +132,12 @@ const Home = () => {
                             Institutional logic engines for real-time asset navigation.
                         </p>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-10">
-                        {features.map((f, i) => (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                        {tools.map((f, i) => (
                             <Link
                                 key={i}
                                 to={f.link}
-                                className="group bg-white p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-black/5 hover:border-[#caf300] transition-all duration-500 hover:shadow-2xl relative overflow-hidden"
+                                className="group bg-white p-6 sm:p-10 rounded-[2.5rem] sm:rounded-[3rem] border border-black/5 hover:border-[#caf300] transition-all duration-500 hover:shadow-2xl relative overflow-hidden"
                             >
                                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[1.25rem] sm:rounded-[1.5rem] bg-[#f8f9fa] flex items-center justify-center mb-6 sm:mb-10 group-hover:bg-[#00193c] group-hover:text-[#caf300] transition-all duration-500">
                                     {f.icon}
@@ -143,6 +146,42 @@ const Home = () => {
                                 <p className="text-[0.75rem] sm:text-[0.8rem] font-medium leading-relaxed text-[#64748b] mb-4 sm:mb-6">{f.desc}</p>
                                 <div className="flex items-center gap-3 text-[0.55rem] sm:text-[0.6rem] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#29695b] group-hover:translate-x-2 transition-all">
                                     Launch Tool <ArrowRight size={14} />
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* INTELLIGENCE SECTION */}
+            <section className="py-16 sm:py-24 lg:py-32 bg-white relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-black/5 to-transparent"></div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                    <div className="flex flex-col lg:flex-row items-end justify-between mb-12 sm:mb-24 gap-6">
+                        <div className="lg:w-2/3 text-left">
+                            <p className="text-[0.625rem] font-black uppercase tracking-[0.4em] text-[#29695b] mb-4">Sovereign Data Streams</p>
+                            <h2 className="font-headline font-black text-3xl sm:text-5xl lg:text-7xl text-[#00193c] tracking-tightest leading-none">Market <br />Intelligence.</h2>
+                        </div>
+                        <p className="lg:w-1/3 text-[#64748b] text-sm sm:text-lg font-medium leading-relaxed">
+                            Quantum-level insights into global asset vectors and digital sentiment.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10">
+                        {intelligence.map((f, i) => (
+                            <Link
+                                key={i}
+                                to={f.link}
+                                className="group flex flex-col bg-[#f8f9fa] p-8 sm:p-12 rounded-[2.5rem] border border-black/5 hover:bg-[#00193c] transition-all duration-500"
+                            >
+                                <div className="flex justify-between items-start mb-10">
+                                    <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-[#29695b] group-hover:bg-[#caf300] group-hover:text-[#00193c] transition-colors">{f.icon}</div>
+                                    <ArrowUpRight className="text-black/10 group-hover:text-[#caf300] transition-colors" size={24} />
+                                </div>
+                                <h3 className="font-headline font-black text-xl sm:text-2xl text-[#00193c] group-hover:text-white mb-4 tracking-tighter">{f.title}</h3>
+                                <p className="text-[0.8rem] font-medium leading-relaxed text-[#64748b] group-hover:text-white/60 mb-8">{f.desc}</p>
+                                <div className="mt-auto pt-6 border-t border-black/5 group-hover:border-white/10">
+                                    <span className="text-[0.6rem] font-black uppercase tracking-[0.2em] text-[#29695b] group-hover:text-[#caf300]">View Analysis Node</span>
                                 </div>
                             </Link>
                         ))}

@@ -36,9 +36,13 @@ const Header = () => {
         { name: 'EMI Desk', path: '/emi', icon: <ShieldCheck size={14} />, desc: 'Debt Amortization' },
         { name: 'Yield Forecast', path: '/investment', icon: <Zap size={14} />, desc: 'Compound Growth' },
         { name: 'Profit Logic', path: '/profit', icon: <Calculator size={14} />, desc: 'Margin Benchmarking' },
-        { name: 'Crypto Matrix', path: '/crypto', icon: <Code2 size={14} />, desc: 'Live Asset Tracking' },
-        { name: 'Metal Analytics', path: '/metals', icon: <BarChart3 size={14} />, desc: 'Precious Metals Spot' },
-        { name: 'Market News', path: '/news', icon: <Newspaper size={14} />, desc: 'Institutional Intel' },
+    ];
+
+    const mainNavLinks = [
+        { name: 'Crypto', path: '/crypto' },
+        { name: 'Metals', path: '/metals' },
+        { name: 'News', path: '/news' },
+        { name: 'Services', path: '/services' },
     ];
 
     const isToolActive = toolLinks.some(link => location.pathname === link.path);
@@ -117,17 +121,20 @@ const Header = () => {
                             </div>
                         </div>
 
-                        <Link
-                            to="/services"
-                            className={cn(
-                                "px-4 py-2 text-[0.625rem] font-black uppercase tracking-[0.2em] transition-all duration-300 rounded-full",
-                                location.pathname === '/services'
-                                    ? "bg-[#00193c] text-white"
-                                    : "text-[#64748b] hover:text-[#00193c] hover:bg-black/5"
-                            )}
-                        >
-                            Services
-                        </Link>
+                        {mainNavLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                to={link.path}
+                                className={cn(
+                                    "px-4 py-2 text-[0.625rem] font-black uppercase tracking-[0.2em] transition-all duration-300 rounded-full",
+                                    location.pathname === link.path
+                                        ? "bg-[#00193c] text-white"
+                                        : "text-[#64748b] hover:text-[#00193c] hover:bg-black/5"
+                                )}
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
                     </div>
                 </div>
 
@@ -153,7 +160,7 @@ const Header = () => {
                 <div className="flex-1 overflow-y-auto p-6 sm:p-8 flex flex-col gap-6 border-t border-black/5">
                     {/* Mobile Tools Section */}
                     <div>
-                        <p className="text-[0.6rem] font-black uppercase tracking-[0.4em] text-[#cbd5e1] mb-6 pl-2">Utility Stack</p>
+                        <p className="text-[0.6rem] font-black uppercase tracking-[0.4em] text-[#cbd5e1] mb-6 pl-2">Calculators</p>
                         <div className="grid grid-cols-1 gap-2">
                             {toolLinks.map((tool) => (
                                 <Link
@@ -179,16 +186,26 @@ const Header = () => {
                         </div>
                     </div>
 
-                    <Link
-                        to="/services"
-                        onClick={() => setIsMenuOpen(false)}
-                        className={cn(
-                            "text-xl sm:text-2xl font-black font-headline tracking-tighter py-6 border-t border-black/5",
-                            location.pathname === '/services' ? "text-[#00193c]" : "text-[#cbd5e1]"
-                        )}
-                    >
-                        Services Desk
-                    </Link>
+                    <div>
+                        <p className="text-[0.6rem] font-black uppercase tracking-[0.4em] text-[#cbd5e1] mb-6 pl-2">Market Intelligence</p>
+                        <div className="grid grid-cols-1 gap-2">
+                            {mainNavLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    to={link.path}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className={cn(
+                                        "flex items-center gap-4 p-4 rounded-[1.25rem] transition-all border",
+                                        location.pathname === link.path
+                                            ? "bg-[#00193c] text-white border-transparent shadow-xl"
+                                            : "bg-[#f8f9fa] text-[#64748b] border-black/5"
+                                    )}
+                                >
+                                    <span className="text-sm font-black uppercase tracking-widest pl-4">{link.name}</span>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
 
                     <div className="mt-auto">
                         <Link
