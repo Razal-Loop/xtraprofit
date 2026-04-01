@@ -32,7 +32,9 @@ const Header = () => {
     }, [isMenuOpen]);
 
     const navLinks = [
-        { name: 'Currency', path: '/currency' },
+        { name: 'FX', path: '/currency' },
+        { name: 'EMI', path: '/emi' },
+        { name: 'Yield', path: '/investment' },
         { name: 'Profit', path: '/profit' },
         { name: 'Crypto', path: '/crypto' },
         { name: 'Metals', path: '/metals' },
@@ -60,8 +62,8 @@ const Header = () => {
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden lg:flex items-center gap-8">
-                    <div className="flex items-center gap-6 bg-black/5 px-5 py-2 rounded-full border border-black/5">
+                <div className="hidden lg:flex items-center gap-4 sm:gap-6">
+                    <div className="flex items-center gap-3 sm:gap-5 bg-black/5 px-4 py-2 rounded-full border border-black/5">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}

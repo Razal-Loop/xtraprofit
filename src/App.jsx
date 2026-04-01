@@ -9,6 +9,8 @@ import Gold from './pages/Gold';
 import News from './pages/News';
 import Services from './pages/Services';
 import Legal from './pages/Legal';
+import EMI from './pages/EMI';
+import Investment from './pages/Investment';
 
 // Placeholder components for other pages
 const Placeholder = ({ name }) => (
@@ -24,6 +26,8 @@ function App() {
             <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="profit" element={<Profit />} />
+                <Route path="emi" element={<EMI />} />
+                <Route path="investment" element={<Investment />} />
                 <Route path="currency" element={<Currency />} />
                 <Route path="crypto" element={<Crypto />} />
                 <Route path="metals" element={<Gold />} />

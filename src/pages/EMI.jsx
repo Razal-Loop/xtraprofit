@@ -1,0 +1,137 @@
+import React, { useState, useEffect } from "react";
+import { Landmark, TrendingUp, Calendar, ShieldCheck, Zap, Info, Wallet } from "lucide-react";
+import { finance } from "../utils/finance";
+
+const EMI = () => {
+    const [amount, setAmount] = useState("50000");
+    const [rate, setRate] = useState("8.5");
+    const [tenure, setTenure] = useState("5");
+    const [results, setResults] = useState({ emi: 0, totalInterest: 0, totalPayment: 0 });
+
+    useEffect(() => {
+        const p = parseFloat(amount);
+        const r = parseFloat(rate);
+        const t = parseFloat(tenure);
+
+        if (p > 0 && r > 0 && t > 0) {
+            const emi = finance.calculateEMI(p, r, t);
+            const totalPayment = emi * t * 12;
+            const totalInterest = totalPayment - p;
+            setResults({
+                emi,
+                totalInterest: parseFloat(totalInterest.toFixed(2)),
+                totalPayment: parseFloat(totalPayment.toFixed(2))
+            });
+        }
+    }, [amount, rate, tenure]);
+
+    return (
+        <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
+            <div className="max-w-7xl mx-auto">
+                <header className="mb-12 sm:mb-20">
+                    <div className="inline-flex items-center gap-2 sm:gap-3 bg-[#00193c] px-3 sm:px-5 py-2 sm:py-2.5 rounded-full mb-6 sm:mb-10 shadow-2xl">
+                        <div className="w-2 h-2 bg-[#caf300] rounded-full animate-pulse shadow-[0_0_10px_#caf300]"></div>
+                        <span className="text-[0.5rem] sm:text-[0.625rem] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#caf300] font-label">Amortization Node • Active Terminal</span>
+                    </div>
+                    <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-8xl tracking-tightest text-[#00193c] leading-[0.85] max-w-4xl">
+                        Debt <br /><span className="text-[#29695b]">Amortization.</span>
+                    </h1>
+                    <p className="mt-6 sm:mt-10 text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed">
+                        High-precision EMI and loan repayment modeling. Analyze institutional debt structures with absolute technical clarity.
+                    </p>
+                </header>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
+                    {/* Calculator Field Matrix */}
+                    <div className="lg:col-span-8 bg-white border border-black/5 p-6 sm:p-12 rounded-[2rem] sm:rounded-[3.5rem] shadow-3xl overflow-hidden relative group font-body">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#caf300]/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-[#caf300]/10 transition-all"></div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 relative z-10">
+                            {[
+                                { label: "Principal Allocation", value: amount, setter: setAmount, icon: <Landmark size={16} className="sm:w-[18px] sm:h-[18px]" />, prefix: "$" },
+                                { label: "Annual Percentage Rate", value: rate, setter: setRate, icon: <TrendingUp size={16} className="sm:w-[18px] sm:h-[18px]" />, prefix: "%" },
+                                { label: "Tenure Period (Years)", value: tenure, setter: setTenure, icon: <Calendar size={16} className="sm:w-[18px] sm:h-[18px]" />, prefix: "Y" }
+                            ].map((field, i) => (
+                                <div key={i} className="space-y-3 sm:space-y-4">
+                                    <label className="flex items-center gap-2 sm:gap-3 text-[0.5625rem] sm:text-[0.6875rem] font-black text-[#00193c] uppercase tracking-[0.3em] sm:tracking-[0.4em] ml-1 sm:ml-2">
+                                        <div className="text-[#29695b]">{field.icon}</div>
+                                        {field.label}
+                                    </label>
+                                    <div className="relative group/input flex items-center">
+                                        <span className="absolute left-5 sm:left-8 text-lg sm:text-xl font-headline font-black text-[#64748b] group-hover/input:text-[#00193c] transition-colors">{field.prefix}</span>
+                                        <input
+                                            type="number"
+                                            value={field.value}
+                                            onChange={(e) => field.setter(e.target.value)}
+                                            className="w-full bg-[#f8f9fa] border-none rounded-[1.25rem] sm:rounded-[1.5rem] p-5 sm:p-8 pl-10 sm:pl-14 font-headline font-black text-xl sm:text-2xl lg:text-3xl text-[#00193c] focus:ring-4 focus:ring-[#caf300]/20 transition-all outline-none"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-10 sm:mt-16 pt-10 sm:pt-16 border-t border-black/5 relative z-10">
+                            <div className="flex flex-col gap-3">
+                                <p className="text-[0.5625rem] sm:text-[0.625rem] font-black text-[#64748b] uppercase tracking-[0.3em] sm:tracking-[0.4em] ml-1">Liquidity Impact</p>
+                                <div className="flex items-center gap-3 sm:gap-5">
+                                    <div className="p-3 sm:p-4 bg-[#00193c] rounded-[1rem] sm:rounded-[1.25rem] text-[#caf300] shadow-xl shrink-0">
+                                        <ShieldCheck size={20} className="sm:w-6 sm:h-6" />
+                                    </div>
+                                    <p className="text-[#00193c] font-medium max-w-sm leading-relaxed text-xs sm:text-sm">
+                                        Your monthly obligation is optimized at <span className="font-black text-[#29695b]">${results.emi.toLocaleString()}</span> based on current market parities.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Result Sidebar */}
+                    <div className="lg:col-span-4 h-full">
+                        <section className="bg-[#00193c] p-8 sm:p-12 lg:p-16 rounded-[2rem] sm:rounded-[3.5rem] text-white relative overflow-hidden h-full flex flex-col justify-between shadow-3xl border border-white/5 font-body">
+                            <div className="absolute top-0 right-0 w-2/3 h-full bg-[#caf300]/5 blur-[150px] pointer-events-none"></div>
+
+                            <div className="relative z-10 w-full mb-10 sm:mb-16">
+                                <div className="space-y-10 sm:space-y-16">
+                                    <div className="group">
+                                        <p className="text-[0.5625rem] sm:text-[0.6875rem] font-black text-[#caf300] uppercase tracking-[0.4em] sm:tracking-[0.5em] mb-3 sm:mb-4 opacity-100 group-hover:translate-x-2 transition-transform duration-500">Monthly Realization</p>
+                                        <div className="flex items-baseline gap-2 sm:gap-3">
+                                            <span className="text-lg sm:text-xl font-headline font-black text-white/40">$</span>
+                                            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-headline font-black text-white tracking-tightest leading-none">
+                                                {results.emi.toLocaleString()}
+                                            </h2>
+                                        </div>
+                                    </div>
+
+                                    <div className="group">
+                                        <p className="text-[0.5625rem] sm:text-[0.6875rem] font-black text-[#29695b] uppercase tracking-[0.4em] sm:tracking-[0.5em] mb-3 sm:mb-4 group-hover:text-[#caf300] transition-colors group-hover:translate-x-2 transition-transform duration-500">Interest Leakage</p>
+                                        <div className="flex items-baseline gap-2 sm:gap-3">
+                                            <span className="text-lg sm:text-xl font-headline font-black text-[#caf300]/40">$</span>
+                                            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-headline font-black text-[#caf300] tracking-tightest leading-none">
+                                                {results.totalInterest.toLocaleString()}
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-auto bg-white/5 p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] border border-white/5 relative z-10 w-full hover:bg-white/10 transition-all cursor-default">
+                                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-[0.5625rem] sm:text-[0.625rem] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] font-headline text-white/50">
+                                    <Info size={16} className="text-[#caf300] sm:w-[18px] sm:h-[18px]" />
+                                    Terminal Status
+                                </div>
+                                <div className="space-y-3 sm:space-y-5">
+                                    <div className="flex justify-between items-center px-1 sm:px-2 py-1"><span className="text-[0.625rem] sm:text-xs font-bold text-white/30 uppercase tracking-[0.1em]">Total Principal</span><span className="font-headline font-black text-base sm:text-lg text-white">${parseFloat(amount).toLocaleString()}</span></div>
+                                    <div className="flex justify-between items-center px-1 sm:px-2 py-1"><span className="text-[0.625rem] sm:text-xs font-bold text-white/30 uppercase tracking-[0.1em]">Total Cost</span><span className="font-headline font-black text-base sm:text-lg text-white">${results.totalPayment.toLocaleString()}</span></div>
+                                    <div className="h-[2px] bg-white/10 rounded-full w-full"></div>
+                                    <div className="flex justify-between items-center px-1 sm:px-2 py-1"><span className="text-[0.625rem] sm:text-xs font-bold text-[#caf300] uppercase tracking-[0.1em]">Interest Ratio</span><span className="font-headline font-black text-xl sm:text-2xl text-[#caf300]">{((results.totalInterest / results.totalPayment) * 100).toFixed(1)}%</span></div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default EMI;
