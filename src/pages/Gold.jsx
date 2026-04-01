@@ -3,7 +3,6 @@ import { ShieldCheck, History, TrendingUp, Info, Activity, Globe, Anchor, Zap, C
 import { cn } from '../lib/utils';
 
 const Gold = () => {
-    // Initial benchmarks in case of API failure
     const [metals, setMetals] = useState([
         { name: 'Gold (24K)', symbol: 'XAU', price: 2715.42, change: '+0.12%', positive: true, unit: 'oz', description: 'LBMA Spot Benchmark' },
         { name: 'Gold (22K)', symbol: 'XAU', price: 2511.18, change: '+0.08%', positive: true, unit: 'oz', description: 'Institutional Purity' },
@@ -16,7 +15,6 @@ const Gold = () => {
 
     const fetchMetalPrices = async () => {
         try {
-            // Using the requested CurrencyFreaks Nexus
             const response = await fetch('https://api.currencyfreaks.com/v2.0/rates/latest?apikey=cee64139e84a410faac3c4bf1016236c&symbols=XAU,XAG,XPT');
             const data = await response.json();
 
@@ -55,8 +53,8 @@ const Gold = () => {
 
     useEffect(() => {
         fetchMetalPrices();
-        const interval = setInterval(fetchMetalPrices, 60000); // 1 minute refresh for API
-        const pulseInterval = setInterval(generateTick, 3000); // Visual ticks every 3s
+        const interval = setInterval(fetchMetalPrices, 60000);
+        const pulseInterval = setInterval(generateTick, 3000);
         return () => {
             clearInterval(interval);
             clearInterval(pulseInterval);
@@ -76,17 +74,17 @@ const Gold = () => {
     };
 
     return (
-        <div className="bg-[#f8f9fa] min-h-screen pt-32 pb-40 px-8 font-body">
+        <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8 font-body">
             <div className="max-w-7xl mx-auto">
-                <header className="mb-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
+                <header className="mb-12 sm:mb-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 sm:gap-10">
                     <div className="flex-grow">
-                        <div className="inline-flex items-center gap-3 bg-[#00193c] px-4 py-1.5 rounded-full mb-8 shadow-2xl transition-all hover:scale-105 active:scale-95 cursor-default border border-[#caf300]/20">
-                            <div className={cn("w-2.5 h-2.5 rounded-full", loading ? "bg-white animate-spin border-2 border-[#caf300] border-t-transparent" : "bg-[#caf300] animate-pulse shadow-[0_0_12px_#caf300]")}></div>
-                            <span className="text-[0.625rem] font-black uppercase tracking-[0.4em] font-label text-[#caf300]">
+                        <div className="inline-flex items-center gap-2 sm:gap-3 bg-[#00193c] px-3 sm:px-4 py-1.5 rounded-full mb-6 sm:mb-8 shadow-2xl transition-all hover:scale-105 active:scale-95 cursor-default border border-[#caf300]/20">
+                            <div className={cn("w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full", loading ? "bg-white animate-spin border-2 border-[#caf300] border-t-transparent" : "bg-[#caf300] animate-pulse shadow-[0_0_12px_#caf300]")}></div>
+                            <span className="text-[0.5rem] sm:text-[0.625rem] font-black uppercase tracking-[0.2em] sm:tracking-[0.4em] font-label text-[#caf300]">
                                 {loading ? 'Calibrating Nodes...' : 'Precious Metals Matrix • LBMA API Mirror'}
                             </span>
                         </div>
-                        <h1 className="font-headline font-black text-5xl lg:text-7xl tracking-tightest text-[#00193c] leading-[0.85] max-w-4xl">
+                        <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-7xl tracking-tightest text-[#00193c] leading-[0.85] max-w-4xl">
                             Metallurgy <br /><span className="text-[#29695b]">Sovereign Index.</span>
                         </h1>
                     </div>
@@ -99,50 +97,50 @@ const Gold = () => {
                 </header>
 
                 {error && (
-                    <div className="mb-16 p-8 bg-black/[0.02] border border-black/5 rounded-[2.5rem] flex items-center justify-center gap-6 text-[#64748b] text-center">
-                        <AlertCircle size={20} className="text-[#29695b]" />
-                        <p className="font-black text-[0.6875rem] uppercase tracking-[0.4em]">{error}</p>
+                    <div className="mb-10 sm:mb-16 p-4 sm:p-8 bg-black/[0.02] border border-black/5 rounded-[1.5rem] sm:rounded-[2.5rem] flex items-center justify-center gap-4 sm:gap-6 text-[#64748b] text-center">
+                        <AlertCircle size={18} className="text-[#29695b] shrink-0 sm:w-5 sm:h-5" />
+                        <p className="font-black text-[0.5625rem] sm:text-[0.6875rem] uppercase tracking-[0.2em] sm:tracking-[0.4em]">{error}</p>
                     </div>
                 )}
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                    <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
+                    <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-10">
                         {metals.map((metal, i) => (
-                            <div key={i} className="bg-white border border-black/5 p-10 rounded-[3rem] transition-all duration-700 hover:translate-y-[-10px] hover:shadow-2xl group overflow-hidden relative shadow-sm text-left">
+                            <div key={i} className="bg-white border border-black/5 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] transition-all duration-700 hover:translate-y-[-10px] hover:shadow-2xl group overflow-hidden relative shadow-sm text-left">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#caf300]/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-[#caf300]/10 transition-all pointer-events-none"></div>
 
-                                <div className="flex justify-between items-start mb-12 relative z-10">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-14 h-14 rounded-[1.5rem] bg-[#f8fafc] flex items-center justify-center text-[#29695b] group-hover:bg-[#00193c] group-hover:text-[#caf300] transition-all duration-500 shadow-inner border border-black/5">
-                                            <Anchor size={24} />
+                                <div className="flex justify-between items-start mb-8 sm:mb-12 relative z-10">
+                                    <div className="flex items-center gap-3 sm:gap-4">
+                                        <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-[1.25rem] sm:rounded-[1.5rem] bg-[#f8fafc] flex items-center justify-center text-[#29695b] group-hover:bg-[#00193c] group-hover:text-[#caf300] transition-all duration-500 shadow-inner border border-black/5">
+                                            <Anchor size={20} className="sm:w-6 sm:h-6" />
                                         </div>
                                         <div>
-                                            <h3 className="font-headline font-black text-xl text-[#00193c] tracking-tight">{metal.name}</h3>
-                                            <p className="text-[0.625rem] text-[#29695b] font-black tracking-[0.25em] uppercase">{metal.symbol} / USD</p>
+                                            <h3 className="font-headline font-black text-lg sm:text-xl text-[#00193c] tracking-tight">{metal.name}</h3>
+                                            <p className="text-[0.5rem] sm:text-[0.625rem] text-[#29695b] font-black tracking-[0.2em] sm:tracking-[0.25em] uppercase">{metal.symbol} / USD</p>
                                         </div>
                                     </div>
                                     <div className={cn(
-                                        "px-4 py-2 rounded-full text-[0.625rem] font-black tracking-widest flex items-center gap-2",
+                                        "px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[0.5rem] sm:text-[0.625rem] font-black tracking-widest flex items-center gap-1.5 sm:gap-2",
                                         metal.positive ? "bg-[#29695b]/10 text-[#29695b]" : "bg-red-500/10 text-red-500"
                                     )}>
-                                        <TrendingUp size={12} className={cn(!metal.positive && "rotate-180")} />
+                                        <TrendingUp size={10} className={cn(!metal.positive && "rotate-180", "sm:w-3 sm:h-3")} />
                                         {metal.change}
                                     </div>
                                 </div>
 
-                                <div className="mb-12 relative z-10">
-                                    <p className="text-[0.6875rem] font-black text-[#64748b] uppercase tracking-[0.4em] mb-2 ml-1">Current Spot Benchmark</p>
-                                    <div className="flex items-baseline gap-3">
-                                        <p className="text-4xl lg:text-5xl font-headline font-black text-[#00193c] tracking-tightest leading-none">
+                                <div className="mb-8 sm:mb-12 relative z-10">
+                                    <p className="text-[0.5625rem] sm:text-[0.6875rem] font-black text-[#64748b] uppercase tracking-[0.3em] sm:tracking-[0.4em] mb-2 ml-1">Current Spot Benchmark</p>
+                                    <div className="flex items-baseline gap-2 sm:gap-3">
+                                        <p className="text-3xl sm:text-4xl lg:text-5xl font-headline font-black text-[#00193c] tracking-tightest leading-none">
                                             {loading ? '---' : metal.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
                                         </p>
-                                        <span className="text-sm font-headline font-black text-[#64748b]/40">/{metal.unit}</span>
+                                        <span className="text-xs sm:text-sm font-headline font-black text-[#64748b]/40">/{metal.unit}</span>
                                     </div>
                                 </div>
 
-                                <div className="pt-10 border-t border-black/5 relative z-10">
-                                    <p className="text-[0.5625rem] font-black text-[#64748b] uppercase tracking-[0.3em] mb-1">Mirror node source</p>
-                                    <p className="text-[0.625rem] font-black text-[#29695b] uppercase tracking-widest flex items-center gap-2">
+                                <div className="pt-6 sm:pt-10 border-t border-black/5 relative z-10">
+                                    <p className="text-[0.5rem] sm:text-[0.5625rem] font-black text-[#64748b] uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-1">Mirror node source</p>
+                                    <p className="text-[0.5625rem] sm:text-[0.625rem] font-black text-[#29695b] uppercase tracking-widest flex items-center gap-2">
                                         <Globe size={10} /> {metal.description}
                                     </p>
                                 </div>
@@ -151,50 +149,50 @@ const Gold = () => {
                                     "absolute -right-10 -bottom-10 opacity-[0.03] transition-all duration-1000 group-hover:scale-150 pointer-events-none",
                                     metal.positive ? "text-[#29695b]" : "text-red-500"
                                 )}>
-                                    <Activity size={200} />
+                                    <Activity size={160} className="sm:w-[200px] sm:h-[200px]" />
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <div className="lg:col-span-4 space-y-8">
-                        <section className="bg-[#00193c] p-12 rounded-[3.5rem] border border-white/5 relative overflow-hidden shadow-3xl text-left">
+                    <div className="lg:col-span-4 space-y-6 sm:space-y-8">
+                        <section className="bg-[#00193c] p-8 sm:p-12 rounded-[2rem] sm:rounded-[3.5rem] border border-white/5 relative overflow-hidden shadow-3xl text-left">
                             <div className="absolute top-0 right-0 w-2/3 h-full bg-[#caf300]/5 blur-[120px] pointer-events-none"></div>
-                            <h4 className="font-headline font-black text-white text-3xl mb-12 tracking-tight leading-none uppercase">
+                            <h4 className="font-headline font-black text-white text-2xl sm:text-3xl mb-8 sm:mb-12 tracking-tight leading-none uppercase">
                                 Sync <br /><span className="text-[#caf300]">Intelligence.</span>
                             </h4>
-                            <div className="space-y-12 relative z-10">
+                            <div className="space-y-8 sm:space-y-12 relative z-10">
                                 {[
-                                    { label: 'Network Node', value: 'METAL-API LIVE', icon: <Globe size={18} /> },
-                                    { label: 'Spot Matrix', value: error ? 'FALLBACK' : 'CONNECTED', icon: <ShieldCheck size={18} /> },
-                                    { label: 'Mirror Latency', value: '< 320ms', icon: <Zap size={18} /> }
+                                    { label: 'Network Node', value: 'METAL-API LIVE', icon: <Globe size={16} className="sm:w-[18px] sm:h-[18px]" /> },
+                                    { label: 'Spot Matrix', value: error ? 'FALLBACK' : 'CONNECTED', icon: <ShieldCheck size={16} className="sm:w-[18px] sm:h-[18px]" /> },
+                                    { label: 'Mirror Latency', value: '< 320ms', icon: <Zap size={16} className="sm:w-[18px] sm:h-[18px]" /> }
                                 ].map((item, i) => (
                                     <div key={i} className="flex flex-col gap-2">
-                                        <div className="flex items-center gap-3 text-white/40">
+                                        <div className="flex items-center gap-2 sm:gap-3 text-white/40">
                                             {item.icon}
-                                            <span className="text-[0.5625rem] font-black uppercase tracking-[0.4em]">{item.label}</span>
+                                            <span className="text-[0.5rem] sm:text-[0.5625rem] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em]">{item.label}</span>
                                         </div>
-                                        <p className="font-headline font-black text-xl text-white ml-8 uppercase">{item.value}</p>
+                                        <p className="font-headline font-black text-lg sm:text-xl text-white ml-6 sm:ml-8 uppercase">{item.value}</p>
                                     </div>
                                 ))}
                             </div>
                         </section>
 
-                        <div className="bg-white border border-black/5 p-10 rounded-[3rem] shadow-sm text-left relative overflow-hidden group">
+                        <div className="bg-white border border-black/5 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] shadow-sm text-left relative overflow-hidden group">
                             <div className="absolute top-0 inset-x-0 h-1 bg-[#caf300]"></div>
-                            <h5 className="font-headline font-black text-[#00193c] text-lg mb-8 uppercase tracking-widest flex items-center gap-3">
-                                <Activity size={18} className="text-[#29695b]" /> Real-Time Ticks
+                            <h5 className="font-headline font-black text-[#00193c] text-base sm:text-lg mb-6 sm:mb-8 uppercase tracking-widest flex items-center gap-2 sm:gap-3">
+                                <Activity size={16} className="text-[#29695b] sm:w-[18px] sm:h-[18px]" /> Real-Time Ticks
                             </h5>
-                            <div className="space-y-6">
+                            <div className="space-y-4 sm:space-y-6">
                                 {ticks.map((t, i) => (
-                                    <div key={i} className="flex items-center justify-between border-b border-black/5 pb-4 last:border-0 group/tick animate-in fade-in slide-in-from-right-2 duration-500">
+                                    <div key={i} className="flex items-center justify-between border-b border-black/5 pb-3 sm:pb-4 last:border-0 group/tick animate-in fade-in slide-in-from-right-2 duration-500">
                                         <div className="flex flex-col">
-                                            <span className="text-[0.625rem] font-black text-[#00193c] tracking-tight">{t.name}</span>
-                                            <span className="text-[0.5rem] font-black text-[#64748b] tracking-widest uppercase">{t.timestamp}</span>
+                                            <span className="text-[0.5625rem] sm:text-[0.625rem] font-black text-[#00193c] tracking-tight">{t.name}</span>
+                                            <span className="text-[0.4375rem] sm:text-[0.5rem] font-black text-[#64748b] tracking-widest uppercase">{t.timestamp}</span>
                                         </div>
                                         <div className="text-right">
-                                            <p className="text-sm font-headline font-black text-[#00193c]">${t.price}</p>
-                                            <p className={cn("text-[0.5rem] font-black tracking-widest", t.type === 'BUY' ? "text-[#29695b]" : "text-red-500")}>{t.type}</p>
+                                            <p className="text-xs sm:text-sm font-headline font-black text-[#00193c]">${t.price}</p>
+                                            <p className={cn("text-[0.4375rem] sm:text-[0.5rem] font-black tracking-widest", t.type === 'BUY' ? "text-[#29695b]" : "text-red-500")}>{t.type}</p>
                                         </div>
                                     </div>
                                 ))}
