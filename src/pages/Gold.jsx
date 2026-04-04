@@ -78,8 +78,9 @@ const Gold = () => {
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8 font-body">
             <Helmet>
-                <title>Gold Price Today & Live Metals Rates | XtraProfit</title>
-                <meta name="description" content="Track gold price today and live metal rates for Silver and Platinum. Our Precious Metals Matrix syncs with institutional LBMA data feeds." />
+                <title>XtraProfit | Gold & Silver Prices - Real-time Metals</title>
+                <link rel="canonical" href="https://xtraprofit.com/metals" />
+                <meta name="description" content="Get live gold and silver prices today. Real-time precious metals benchmarks and market analysis for technical investors and asset trackers." />
                 <script type="application/ld+json">
                     {`
                     {

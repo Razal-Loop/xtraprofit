@@ -143,8 +143,9 @@ const Currency = () => {
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
             <Helmet>
-                <title>Currency Converter & Live FX Rates | XtraProfit</title>
-                <meta name="description" content="Convert currencies instantly with live FX rates using our FX Parity Engine. Fast and accurate global currency converter for 170+ pairs." />
+                <title>XtraProfit | Currency Converter - Live FX Rates</title>
+                <link rel="canonical" href="https://xtraprofit.com/tools/currency" />
+                <meta name="description" content="Convert currencies instantly with live FX rates. Our FX Parity Engine provides real-time benchmarks for 170+ global currency pairs." />
                 <script type="application/ld+json">
                     {`
                     {

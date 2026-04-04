@@ -108,8 +108,9 @@ const Services = () => {
     return (
         <div className="bg-[#f8f9fa] text-[#0f172a] font-body selection:bg-[#caf300]/30 selection:text-[#00193c] leading-relaxed overflow-x-hidden pt-12 sm:pt-16">
             <Helmet>
-                <title>Software Development Services | XtraProfit Software House</title>
-                <meta name="description" content="Custom Software Development Services - XtraProfit provides bespoke websites, mobile apps, and AI solutions for e-commerce, healthcare, and fintech." />
+                <title>XtraProfit | Software Services - Custom Engineering</title>
+                <link rel="canonical" href="https://xtraprofit.com/services" />
+                <meta name="description" content="Bespoke software development for fintech, AI implementations, and sovereign web applications. High-performance engineering for modern digital needs." />
                 <script type="application/ld+json">
                     {`
                     {

@@ -84,8 +84,9 @@ const Tools = () => {
     return (
         <div className="bg-[#f8f9fa] text-[#0f172a] font-body selection:bg-[#caf300]/30 selection:text-[#00193c] leading-relaxed overflow-x-hidden pt-14 sm:pt-20">
             <Helmet>
-                <title>Financial Tools & Calculators | XtraProfit Utility Suite</title>
-                <meta name="description" content="Financial Tools & Calculators - Explore XtraProfit's suite of EMI calculators, currency converters, and investment yield trackers for accurate planning." />
+                <title>XtraProfit | Tools - Free Financial Calculators</title>
+                <link rel="canonical" href="https://xtraprofit.com/tools" />
+                <meta name="description" content="Explore XtraProfit's suite of institutional-grade financial tools. From currency converters to investment calculators, get precise data for your assets." />
                 <script type="application/ld+json">
                     {`
                     {

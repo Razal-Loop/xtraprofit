@@ -17,8 +17,9 @@ const Profit = () => {
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
             <Helmet>
-                <title>Profit Margin Calculator & Business Planner | XtraProfit</title>
-                <meta name="description" content="Calculate business profits and margins with our Profit Realization Hub. accurately forecast gross capitalization and unit-level margins." />
+                <title>XtraProfit | Profit Calculator - Business Analysis</title>
+                <link rel="canonical" href="https://xtraprofit.com/tools/profit" />
+                <meta name="description" content="Calculate business profit margins and gross capitalization. Precision-grade profit modeling for modern commerce and financial forecasting." />
                 <script type="application/ld+json">
                     {`
                     {

@@ -26,8 +26,9 @@ const Investment = () => {
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
             <Helmet>
-                <title>SIP & Investment Calculator | XtraProfit Yield Forecasting</title>
-                <meta name="description" content="Advanced SIP & Investment Calculator. Model compound growth, mutual fund returns, and wealth realization with institutional-grade financial precision." />
+                <title>XtraProfit | Investment Calculator - SIP & Growth</title>
+                <link rel="canonical" href="https://xtraprofit.com/tools/investment" />
+                <meta name="description" content="Forecast your investment growth with our SIP and compound interest calculator. Professional modeling for mutual funds and equity returns." />
                 <script type="application/ld+json">
                     {`
                     {

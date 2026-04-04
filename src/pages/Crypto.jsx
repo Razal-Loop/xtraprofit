@@ -70,8 +70,9 @@ const Crypto = () => {
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
             <Helmet>
-                <title>Crypto Prices & Live Market Data | XtraProfit Tracker</title>
-                <meta name="description" content="Track live crypto prices and market trends with our Digital Wealth Portal. Real-time cryptocurrency data and insights for Bitcoin, Ethereum, and more." />
+                <title>XtraProfit | Crypto Prices - Live Market Data</title>
+                <link rel="canonical" href="https://xtraprofit.com/crypto" />
+                <meta name="description" content="Track live crypto prices, market capitalization, and digital asset trends. Real-time indices for Bitcoin, Ethereum, and the global crypto market." />
                 <script type="application/ld+json">
                     {`
                     {

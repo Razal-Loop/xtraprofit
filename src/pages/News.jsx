@@ -85,8 +85,9 @@ const News = () => {
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8 font-body">
             <Helmet>
-                <title>Financial News & Market Intelligence | XtraProfit Nexus</title>
-                <meta name="description" content="Stay updated with the latest financial news, market intelligence, and sentiment analysis on our Institutional News Nexus for technical investors." />
+                <title>XtraProfit | Financial News - Market Updates</title>
+                <link rel="canonical" href="https://xtraprofit.com/news" />
+                <meta name="description" content="Stay updated with the latest financial news and technical market analysis. Verified intelligence for sovereigns and global digital asset traders." />
                 <script type="application/ld+json">
                     {`
                     {

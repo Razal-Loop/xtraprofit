@@ -30,8 +30,9 @@ const EMI = () => {
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
             <Helmet>
-                <title>EMI Calculator - Loan & Interest Planner | XtraProfit</title>
-                <meta name="description" content="Calculate your loan EMI with our EMI Amortization Desk. Get accurate monthly payments, interest breakdown, and repayment schedules instantly." />
+                <title>XtraProfit | EMI Calculator - Loan & Interest</title>
+                <link rel="canonical" href="https://xtraprofit.com/tools/emi" />
+                <meta name="description" content="Calculate your loan EMIs with precision. Free EMI calculator for home loans, personal loans, and car loans with full amortisation schedules." />
                 <script type="application/ld+json">
                     {`
                     {

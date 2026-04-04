@@ -57,8 +57,9 @@ const Home = () => {
     return (
         <div className="bg-[#f8f9fa] text-[#0f172a] font-body selection:bg-[#caf300]/30 selection:text-[#00193c] leading-relaxed overflow-x-hidden pt-14 sm:pt-20">
             <Helmet>
-                <title>XtraProfit | Home - Financial Tools & Software Solutions</title>
-                <meta name="description" content="XtraProfit Home - Your financial utility hub with currency converters, EMI calculators, and custom software services for modern investors." />
+                <title>XtraProfit | Financial Tools, Crypto Prices & Software Solutions</title>
+                <link rel="canonical" href="https://xtraprofit.com/" />
+                <meta name="description" content="XtraProfit: The institutional financial tools hub. Access live currency converters, EMI calculators, crypto prices, and bespoke software development services." />
                 <script type="application/ld+json">
                     {`
                     {
@@ -79,13 +80,40 @@ const Home = () => {
                     {`
                     {
                         "@context": "https://schema.org",
-                        "@type": "Organization",
-                        "name": "XtraProfit",
-                        "url": "https://xtraprofit.com",
-                        "logo": "https://xtraprofit.com/logo.png",
-                        "sameAs": [
-                            "https://github.com/Razal-Loop",
-                            "https://www.linkedin.com/in/razal-ali-8b3693379"
+                        "@type": "FAQPage",
+                        "mainEntity": [
+                            {
+                                "@type": "Question",
+                                "name": "How accurate are the live currency rates?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Our FX Parity Engine pulls data from institutional-grade API providers every 60 seconds, ensuring you receive the most accurate interbank rates available for over 170 currencies."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Can I use XtraProfit for business profit modeling?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Yes. Our Profit Margin Calculator is designed for gross capitalization forecasting, allowing businesses to benchmark margins and optimize pricing strategies based on real-time overhead logic."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Does your software desk build custom fintech apps?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Precisely. Our engineering desk specializes in bespoke software solutions, from AI-integrated logic engines to sovereign web applications tailored to specific institutional requirements."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Are the crypto and metal prices live?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Absolutely. We provide real-time digital asset indices and precious metal benchmarks, helping you track Bitcoin, Ethereum, Gold, and Silver volatility with precision."
+                                }
+                            }
                         ]
                     }
                     `}
@@ -269,7 +297,58 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-        </div>
+
+            {/* EXPERT ANALYSIS & FAQ SECTION (SEO BOOST) */}
+            <section className="py-20 sm:py-32 bg-[#f8f9fa] border-t border-black/5">
+                <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                        <div>
+                            <h2 className="font-headline font-black text-3xl sm:text-5xl text-[#00193c] mb-10 tracking-tight leading-tight">Institutional Intelligence <br /><span className="text-[#29695b]">Accessible to All.</span></h2>
+                            <div className="space-y-8 text-[#64748b] text-base sm:text-lg font-medium leading-relaxed">
+                                <p>
+                                    At XtraProfit, we bridge the gap between complex financial algorithms and user-centric digital environments. Our mission is to provide sovereign utility—tools that empower individuals with the same precision-grade data used by institutional analysts. Whether you are calculating compound growth for long-term wealth realization or tracking real-time FX parity across 170+ global pairs, our logic engines deliver sub-second accuracy.
+                                </p>
+                                <p>
+                                    Our platform isn't just about calculation; it's about clarity. We understand that financial decision-making requires more than raw numbers—it requires context. That's why our Market Intelligence sector integrates live crypto market capitalization trends, precious metals benchmarks for gold and silver today, and a curated financial news desk.
+                                </p>
+                                <div className="pt-8 grid grid-cols-2 gap-6 border-t border-black/5">
+                                    <div>
+                                        <div className="text-3xl font-black text-[#00193c] mb-1">170+</div>
+                                        <div className="text-xs font-bold uppercase tracking-widest opacity-50">Global Currencies</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-3xl font-black text-[#00193c] mb-1">Live</div>
+                                        <div className="text-xs font-bold uppercase tracking-widest opacity-50">Market Intelligence</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-white p-8 sm:p-12 rounded-[3rem] border border-black/5 shadow-sm">
+                            <h3 className="font-headline font-black text-2xl text-[#00193c] mb-10">Frequently Asked Questions</h3>
+                            <div className="space-y-8">
+                                {[
+                                    { q: "How accurate are the live currency rates?", a: "Our FX Parity Engine pulls data from institutional-grade API providers every 60 seconds, ensuring you receive the most accurate interbank rates available for over 170 currencies." },
+                                    { q: "Can I use XtraProfit for business profit modeling?", a: "Yes. Our Profit Margin Calculator is designed for gross capitalization forecasting, allowing businesses to benchmark margins and optimize pricing strategies based on real-time overhead logic." },
+                                    { q: "Does your software desk build custom fintech apps?", a: "Precisely. Our engineering desk specializes in bespoke software solutions, from AI-integrated logic engines to sovereign web applications tailored to specific institutional requirements." },
+                                    { q: "Are the crypto and metal prices live?", a: "Absolutely. We provide real-time digital asset indices and precious metal benchmarks, helping you track Bitcoin, Ethereum, Gold, and Silver volatility with precision." }
+                                ].map((faq, i) => (
+                                    <div key={i} className="group cursor-default">
+                                        <div className="flex items-start gap-4 mb-3">
+                                            <div className="w-6 h-6 rounded-lg bg-[#caf300]/20 flex items-center justify-center shrink-0 mt-1">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-[#29695b]"></div>
+                                            </div>
+                                            <h4 className="font-headline font-black text-[0.9rem] sm:text-lg text-[#00193c] group-hover:text-[#29695b] transition-colors">{faq.q}</h4>
+                                        </div>
+                                        <p className="pl-10 text-sm sm:text-base text-[#64748b] leading-relaxed font-medium">{faq.a}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section >
+        </div >
     );
 };
 
