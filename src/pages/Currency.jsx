@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowRightLeft, TrendingUp, History, Globe, ShieldCheck, Search, ChevronDown, Activity, Zap } from "lucide-react";
 import { cn } from "../lib/utils";
 
@@ -140,6 +142,28 @@ const Currency = () => {
 
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
+            <Helmet>
+                <title>Currency Converter & Live FX Rates | XtraProfit</title>
+                <meta name="description" content="Convert currencies instantly with live FX rates using our FX Parity Engine. Fast and accurate global currency converter for 170+ pairs." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Currency Converter",
+                        "applicationCategory": "FinanceApplication",
+                        "operatingSystem": "Web",
+                        "url": "https://xtraprofit.com/tools/currency",
+                        "description": "Convert currencies instantly with live FX rates using our FX Parity Engine.",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        }
+                    }
+                    `}
+                </script>
+            </Helmet>
             <div className="max-w-7xl mx-auto">
                 <header className="mb-12 sm:mb-20">
                     <div className="inline-flex items-center gap-2 sm:gap-3 bg-[#00193c] px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-6 sm:mb-10 shadow-2xl">
@@ -148,9 +172,12 @@ const Currency = () => {
                             {loading ? 'Synchronizing Nexus...' : 'Global Asset Sync Matrix • LIVE'}
                         </span>
                     </div>
-                    <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-7xl text-[#00193c] leading-[0.9] tracking-tightest mb-6 sm:mb-10">
-                        Exchange <br /><span className="text-[#29695b]">Parity Engine.</span>
+                    <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-8xl tracking-tightest text-[#00193c] leading-[0.85]">
+                        Currency Converter <br /><span className="text-[#29695b]">with Live FX Rates.</span>
                     </h1>
+                    <p className="mt-6 sm:mt-10 text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed italic">
+                        Convert currencies instantly with our <Link to="/tools/currency" className="text-[#00193c] border-b-2 border-[#caf300]/30 hover:border-[#caf300] transition-colors">Currency Converter</Link> and real-time exchange rates. Our FX Parity Engine provides sub-second price benchmarks for 170+ pairs.
+                    </p>
                 </header>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
@@ -246,6 +273,24 @@ const Currency = () => {
                         </section>
                     </div>
                 </div>
+
+                {/* Related Tools Section */}
+                <section className="mt-20 sm:mt-32 border-t border-black/5 pt-16 sm:pt-24 text-left">
+                    <h2 className="font-headline font-black text-2xl sm:text-4xl text-[#00193c] mb-8 sm:mb-12 tracking-tight">Related Financial Tools</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { name: 'EMI Calculator', link: '/tools/emi', desc: 'Calculate monthly loan repayments.' },
+                            { name: 'Investment Calculator', link: '/tools/investment', desc: 'Plan SIP and compound growth.' },
+                            { name: 'Profit Calculator', link: '/tools/profit', desc: 'Forecast business capitalization.' },
+                            { name: 'Crypto Prices', link: '/crypto', desc: 'Live digital asset tracking.' }
+                        ].map((tool, i) => (
+                            <Link key={i} to={tool.link} className="bg-white border border-black/5 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all group">
+                                <h3 className="font-headline font-black text-lg text-[#00193c] group-hover:text-[#29695b] transition-colors mb-2">{tool.name}</h3>
+                                <p className="text-sm text-[#64748b] font-medium">{tool.desc}</p>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
             </div>
         </div>
     );

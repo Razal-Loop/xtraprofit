@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Landmark, TrendingUp, Calendar, ShieldCheck, Zap, Info, Wallet } from "lucide-react";
 import { finance } from "../utils/finance";
 
@@ -27,17 +29,39 @@ const EMI = () => {
 
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
+            <Helmet>
+                <title>EMI Calculator - Loan & Interest Planner | XtraProfit</title>
+                <meta name="description" content="Calculate your loan EMI with our EMI Amortization Desk. Get accurate monthly payments, interest breakdown, and repayment schedules instantly." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "EMI Calculator",
+                        "applicationCategory": "FinanceApplication",
+                        "operatingSystem": "Web",
+                        "url": "https://xtraprofit.com/tools/emi",
+                        "description": "Calculate loan EMI, interest breakdowns, and repayment schedules with our institutional-grade EMI calculator.",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        }
+                    }
+                    `}
+                </script>
+            </Helmet>
             <div className="max-w-7xl mx-auto">
                 <header className="mb-12 sm:mb-20">
                     <div className="inline-flex items-center gap-2 sm:gap-3 bg-[#00193c] px-3 sm:px-5 py-2 sm:py-2.5 rounded-full mb-6 sm:mb-10 shadow-2xl">
                         <div className="w-2 h-2 bg-[#caf300] rounded-full animate-pulse shadow-[0_0_10px_#caf300]"></div>
                         <span className="text-[0.5rem] sm:text-[0.625rem] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#caf300] font-label">Amortization Node • Active Terminal</span>
                     </div>
-                    <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-8xl tracking-tightest text-[#00193c] leading-[0.85] max-w-4xl">
-                        Debt <br /><span className="text-[#29695b]">Amortization.</span>
+                    <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-8xl tracking-tightest text-[#00193c] leading-[0.85]">
+                        EMI Calculator <br /><span className="text-[#29695b]">for Loans & Interest.</span>
                     </h1>
-                    <p className="mt-6 sm:mt-10 text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed">
-                        High-precision EMI and loan repayment modeling. Analyze institutional debt structures with absolute technical clarity.
+                    <p className="mt-6 sm:mt-10 text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed italic">
+                        Calculate your loan EMI, interest breakdown, and repayment schedules with our easy-to-use <Link to="/emi" className="text-[#00193c] border-b-2 border-[#caf300]/30 hover:border-[#caf300] transition-colors">EMI Calculator</Link>. Plan your debt structure with absolute technical clarity.
                     </p>
                 </header>
 
@@ -129,6 +153,24 @@ const EMI = () => {
                         </section>
                     </div>
                 </div>
+
+                {/* Related Tools Section */}
+                <section className="mt-20 sm:mt-32 border-t border-black/5 pt-16 sm:pt-24 text-left">
+                    <h2 className="font-headline font-black text-2xl sm:text-4xl text-[#00193c] mb-8 sm:mb-12 tracking-tight">Related Financial Tools</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { name: 'Currency Converter', link: '/tools/currency', desc: 'Real-time FX exchange rates.' },
+                            { name: 'Investment Calculator', link: '/tools/investment', desc: 'Plan SIP and compound growth.' },
+                            { name: 'Profit Calculator', link: '/tools/profit', desc: 'Forecast business capitalization.' },
+                            { name: 'Crypto Prices', link: '/crypto', desc: 'Live digital asset tracking.' }
+                        ].map((tool, i) => (
+                            <Link key={i} to={tool.link} className="bg-white border border-black/5 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all group">
+                                <h3 className="font-headline font-black text-lg text-[#00193c] group-hover:text-[#29695b] transition-colors mb-2">{tool.name}</h3>
+                                <p className="text-sm text-[#64748b] font-medium">{tool.desc}</p>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
             </div>
         </div>
     );

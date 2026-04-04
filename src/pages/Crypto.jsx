@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { TrendingUp, TrendingDown, Layers, LayoutGrid, LayoutList, Search, Activity, Cpu, Loader2, AlertCircle } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -67,6 +69,25 @@ const Crypto = () => {
 
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
+            <Helmet>
+                <title>Crypto Prices & Live Market Data | XtraProfit Tracker</title>
+                <meta name="description" content="Track live crypto prices and market trends with our Digital Wealth Portal. Real-time cryptocurrency data and insights for Bitcoin, Ethereum, and more." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "FinancialProduct",
+                        "name": "Cryptocurrency Market Data",
+                        "description": "Live cryptocurrency prices, market trends, and data tracking for major digital assets like Bitcoin and Ethereum.",
+                        "url": "https://xtraprofit.com/crypto",
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "XtraProfit"
+                        }
+                    }
+                    `}
+                </script>
+            </Helmet>
             <div className="max-w-7xl mx-auto">
                 <header className="mb-12 sm:mb-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 sm:gap-10">
                     <div className="flex-grow">
@@ -77,10 +98,10 @@ const Crypto = () => {
                             </span>
                         </div>
                         <h1 className="font-headline font-black text-3xl sm:text-5xl md:text-7xl tracking-tightest text-[#00193c] leading-[0.85] max-w-4xl">
-                            Digital <br /><span className="text-[#29695b]">Wealth Portals.</span>
+                            Live Crypto Prices <br /><span className="text-[#29695b]">& Market Data.</span>
                         </h1>
                         <p className="mt-5 sm:mt-8 text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed font-body">
-                            Sovereign data for digital asset analysis. Sub-second price parity across global liquidity pools and institutional exchanges.
+                            Track <Link to="/crypto" className="text-[#00193c] border-b-2 border-[#caf300]/30 hover:border-[#caf300] transition-colors">live crypto prices</Link> and market trends in real-time. Get sub-second price parity for Bitcoin, Ethereum, and major digital assets.
                         </p>
                     </div>
                     <div className="flex bg-black/5 rounded-[1.25rem] p-1.5 border border-black/5 mb-2 self-start md:self-auto">
@@ -255,6 +276,23 @@ const Crypto = () => {
                                 </div>
                             ))}
                         </div>
+                    </div>
+                </section>
+                {/* Related Tools Section */}
+                <section className="mt-20 sm:mt-32 border-t border-black/5 pt-16 sm:pt-24 text-left">
+                    <h2 className="font-headline font-black text-2xl sm:text-4xl text-[#00193c] mb-8 sm:mb-12 tracking-tight">Related Market Intelligence</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { name: 'Financial News', link: '/news', desc: 'Verified news and analysis.' },
+                            { name: 'Gold & Silver Price Today', link: '/metals', desc: 'Live precious metals rates.' },
+                            { name: 'Currency Converter', link: '/tools/currency', desc: 'Real-time FX exchange rates.' },
+                            { name: 'Custom Solutions', link: '/services', desc: 'Software development services.' }
+                        ].map((tool, i) => (
+                            <Link key={i} to={tool.link} className="bg-white border border-black/5 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all group">
+                                <h3 className="font-headline font-black text-lg text-[#00193c] group-hover:text-[#29695b] transition-colors mb-2">{tool.name}</h3>
+                                <p className="text-sm text-[#64748b] font-medium">{tool.desc}</p>
+                            </Link>
+                        ))}
                     </div>
                 </section>
             </div>

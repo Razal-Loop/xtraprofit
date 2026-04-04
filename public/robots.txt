@@ -1,3 +1,7 @@
 User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /api/
 Allow: /
+
 Sitemap: https://xtraprofit.com/sitemap.xml

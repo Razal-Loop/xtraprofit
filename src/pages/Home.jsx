@@ -2,52 +2,53 @@ import React from 'react';
 import { ArrowRight, ArrowUpRight, Globe, Calculator, BarChart3, ShieldCheck, Zap, Laptop, Smartphone, Code2, Layers, Briefcase, ExternalLink, Github, Linkedin, CheckCircle2, Newspaper } from 'lucide-react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { cn } from '../lib/utils';
 
 const Home = () => {
     const tools = [
         {
-            title: 'FX Parity Matrix',
-            desc: 'High-precision currency conversion with live exchange benchmarks for 170+ global assets.',
+            title: 'Currency Converter',
+            desc: 'Powerful currency converter with real-time exchange rates for 170+ global currencies.',
             icon: <Globe className="text-[#29695b]" size={20} />,
-            link: '/currency'
+            link: '/tools/currency'
         },
         {
-            title: 'EMI Amortization',
-            desc: 'Institutional debt modeling and monthly obligation analysis for strategic capitalization.',
+            title: 'EMI Calculator',
+            desc: 'Easy-to-use EMI calculator for loans, interest breakdowns, and monthly repayment schedules.',
             icon: <ShieldCheck className="text-[#29695b]" size={20} />,
-            link: '/emi'
+            link: '/tools/emi'
         },
         {
-            title: 'Yield Forecasting',
-            desc: 'Compound growth projections and wealth realization modeling for long-term assets.',
+            title: 'Investment Calculator',
+            desc: 'Professional investment calculator for SIP, mutual funds, and compound growth modeling.',
             icon: <Zap className="text-[#29695b]" size={20} />,
-            link: '/investment'
+            link: '/tools/investment'
         },
         {
-            title: 'Profit Realization',
-            desc: 'Strategic fiscal forecasting for unit-level margins and gross business capitalization.',
+            title: 'Profit Margin Calculator',
+            desc: 'Accurate profit margin calculator for business analysis and gross capitalization forecasting.',
             icon: <Calculator className="text-[#29695b]" size={20} />,
-            link: '/profit'
+            link: '/tools/profit'
         }
     ];
 
     const intelligence = [
         {
-            title: 'Metal Analytics',
-            desc: 'Real-time spot price benchmarks for Gold, Silver, and strategic precious metallurgy.',
+            title: 'Gold & Silver Prices',
+            desc: 'Track live gold and silver prices today with real-time precious metals benchmarks.',
             icon: <BarChart3 className="text-[#29695b]" size={20} />,
             link: '/metals'
         },
         {
-            title: 'Crypto Matrix',
-            desc: 'Live digital asset tracking with high-density price action and market sentiment feeds.',
+            title: 'Crypto Prices',
+            desc: 'Stay updated with live crypto prices and market trends for Bitcoin, Ethereum, and more.',
             icon: <Code2 className="text-[#29695b]" size={20} />,
             link: '/crypto'
         },
         {
-            title: 'Market Intelligence',
-            desc: 'Real-time news feeds and sentiment logic from global financial intelligence nodes.',
+            title: 'Financial News',
+            desc: 'Latest financial news and market updates for technical investors and financial analysts.',
             icon: <Newspaper className="text-[#29695b]" size={20} />,
             link: '/news'
         }
@@ -55,6 +56,41 @@ const Home = () => {
 
     return (
         <div className="bg-[#f8f9fa] text-[#0f172a] font-body selection:bg-[#caf300]/30 selection:text-[#00193c] leading-relaxed overflow-x-hidden pt-14 sm:pt-20">
+            <Helmet>
+                <title>XtraProfit | Home - Financial Tools & Software Solutions</title>
+                <meta name="description" content="XtraProfit Home - Your financial utility hub with currency converters, EMI calculators, and custom software services for modern investors." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "WebSite",
+                        "name": "XtraProfit",
+                        "url": "https://xtraprofit.com",
+                        "description": "Premium financial utility hub with currency converters, calculators, and market intelligence.",
+                        "potentialAction": {
+                            "@type": "SearchAction",
+                            "target": "https://xtraprofit.com/tools?q={search_term_string}",
+                            "query-input": "required name=search_term_string"
+                        }
+                    }
+                    `}
+                </script>
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "XtraProfit",
+                        "url": "https://xtraprofit.com",
+                        "logo": "https://xtraprofit.com/logo.png",
+                        "sameAs": [
+                            "https://github.com/Razal-Loop",
+                            "https://www.linkedin.com/in/razal-ali-8b3693379"
+                        ]
+                    }
+                    `}
+                </script>
+            </Helmet>
             {/* HERO SECTION */}
             <section className="relative overflow-hidden bg-white py-10 sm:py-16 lg:py-40">
                 {/* Background Blobs */}
@@ -70,11 +106,11 @@ const Home = () => {
                             </div>
 
                             <h1 className="font-headline text-4xl sm:text-5xl lg:text-8xl font-black text-[#00193c] leading-[0.85] mb-6 sm:mb-10 tracking-tightest">
-                                Sovereign <br /><span className="text-[#29695b]">Utility Hub.</span>
+                                Financial Tools, Crypto Prices & <br /><span className="text-[#29695b]">Software Solutions.</span>
                             </h1>
 
-                            <p className="text-[#64748b] text-base sm:text-xl lg:text-3xl max-w-2xl mb-8 sm:mb-16 font-medium leading-relaxed mx-auto lg:mx-0">
-                                A high-performance <span className="font-black text-[#00193c]">software ecosystem</span> for real-time asset analytics, fiscal calculations, and institutional software engineering.
+                            <p className="text-[#64748b] text-base sm:text-xl lg:text-3xl max-w-2xl mb-8 sm:mb-16 font-medium leading-relaxed mx-auto lg:mx-0 font-body">
+                                Access <Link to="/tools" className="text-[#00193c] border-b-2 border-[#caf300]/30 hover:border-[#caf300] transition-colors">free financial tools</Link>, track live crypto prices, and explore professional software solutions. XtraProfit is your sovereign hub for high-performance digital utilities.
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-12 mb-8 sm:mb-16">

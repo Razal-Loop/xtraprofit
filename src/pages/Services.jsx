@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Terminal, Codepen, BarChart4, Mail, Phone, MapPin, Laptop, Smartphone, Cpu, Network, Database, Layers, Github, Linkedin, Briefcase, ExternalLink, Code2, Globe, Server, CheckCircle2, CheckCircle, ArrowRight, Loader2, ShieldCheck, Zap } from 'lucide-react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { cn } from '../lib/utils';
@@ -48,56 +50,89 @@ const Services = () => {
         { name: 'Armour Apparels', link: 'https://armourapparels.com' },
         { name: 'MyMeds Pharmacy Inc.', link: 'https://mymedspharmacyinc.com' },
         { name: 'XtraProfit Sovereign', link: 'https://xtraprofit.com' },
-        { name: 'Institutional Desk Deployment', link: '#' },
-        { name: 'Global Asset Sync Engine', link: '#' },
-        { name: 'LBMA Live Terminal Console', link: '#' }
+        { name: 'E-Commerce Platforms', link: '#' },
+        { name: 'Healthcare Solutions', link: '#' },
+        { name: 'AI-Powered Dashboards', link: '#' },
+        { name: 'Real Estate Portals', link: '#' },
+        { name: 'EdTech Solutions', link: '#' }
     ];
 
     const techStack = [
-        'React.js', 'Next.js', 'Node.js', 'Python', 'PostgreSQL', 'AWS Cloud', 'Docker', 'Kubernetes', 'TensorFlow', 'TypeScript', 'Redux', 'MongoDB'
+        'React.js', 'Next.js', 'Node.js', 'Python', 'PostgreSQL', 'AWS Cloud', 'Docker', 'Kubernetes', 'TensorFlow', 'TypeScript', 'React Native', 'MongoDB', 'Firebase', 'Supabase', 'OpenAI', 'Flutter'
+    ];
+
+    const industries = [
+        'E-Commerce', 'Healthcare', 'Real Estate', 'Education', 'Finance', 'Logistics',
+        'Food & Delivery', 'SaaS', 'Social Media', 'Fitness', 'Travel', 'Legal Tech'
     ];
 
     const servicesGrid = [
         {
-            title: 'Web Engineering',
-            desc: 'Crafting high-speed business websites and ultra-optimized landing pages designed for market authority.',
+            title: 'Websites',
+            desc: 'Stunning business websites, landing pages, and portfolios for any industry — from restaurants to law firms. SEO-optimized, blazing fast, and built to convert visitors into customers.',
             icon: <Globe className="text-[#29695b]" size={20} />,
-            features: ['Market Velocity', 'Performance Core'],
+            features: ['Any Industry', 'SEO Optimized', 'Conversion Focused'],
         },
         {
-            title: 'Custom Web Apps',
-            desc: 'Building scalable SaaS platforms and interactive dashboards to automate any industry workflow.',
+            title: 'Web Applications',
+            desc: 'Full-stack SaaS platforms, admin dashboards, CRM systems, booking portals, and marketplace apps. Scalable architecture for startups and enterprises across every sector.',
             icon: <Laptop className="text-[#29695b]" size={20} />,
-            features: ['Custom CRM/ERP', 'Business Logic'],
+            features: ['SaaS / Dashboards', 'Custom Logic', 'Scalable'],
         },
         {
-            title: 'Mobile Ecosystems',
-            desc: 'Native-level solutions for iOS and Android. High-fidelity mobile experiences for modern brands.',
+            title: 'Mobile Apps',
+            desc: 'Cross-platform and native mobile applications for iOS and Android. From e-commerce apps to fitness trackers, delivery platforms, and social networks — we build them all.',
             icon: <Smartphone className="text-[#29695b]" size={20} />,
-            features: ['Native Scale', 'UX Excellence'],
+            features: ['iOS & Android', 'React Native', 'App Store Ready'],
         },
         {
-            title: 'AI Logic Engines',
-            desc: 'Integrating Large Language Models and custom automation into existing systems to amplify intelligence.',
+            title: 'AI-Integrated Apps',
+            desc: 'Smart applications powered by OpenAI, Gemini, and custom ML models. Chatbots, recommendation engines, content generators, and intelligent automation for any business.',
             icon: <Cpu className="text-[#29695b]" size={20} />,
-            features: ['LLM Orchestration', 'Automated Flows'],
+            features: ['LLM Integration', 'Custom AI', 'Automation'],
         },
         {
-            title: 'Enterprise Software',
-            desc: 'End-to-end systems designed for operational longevity, including inventory, logistics, and data hubs.',
+            title: 'E-Commerce Solutions',
+            desc: 'Complete online stores with payment gateways, inventory management, and order tracking. Shopify, custom builds, or headless commerce — tailored to your business model.',
             icon: <Database className="text-[#29695b]" size={20} />,
-            features: ['System Integration', 'Infinite Scale'],
+            features: ['Payment Integration', 'Inventory Mgmt', 'Multi-Vendor'],
         },
         {
-            title: 'API Engineering',
-            desc: 'Robust connective tissue for modern enterprises. Secure APIs to unify fragmented business data.',
+            title: 'API & Backend',
+            desc: 'Robust REST and GraphQL APIs, microservices architecture, and cloud infrastructure. Connecting your frontend, mobile apps, and third-party services seamlessly.',
             icon: <Network className="text-[#29695b]" size={20} />,
-            features: ['Zero-Trust Security', 'High-Density APIs'],
+            features: ['REST / GraphQL', 'Cloud Deploy', 'Microservices'],
         }
     ];
 
     return (
         <div className="bg-[#f8f9fa] text-[#0f172a] font-body selection:bg-[#caf300]/30 selection:text-[#00193c] leading-relaxed overflow-x-hidden pt-12 sm:pt-16">
+            <Helmet>
+                <title>Software Development Services | XtraProfit Software House</title>
+                <meta name="description" content="Custom Software Development Services - XtraProfit provides bespoke websites, mobile apps, and AI solutions for e-commerce, healthcare, and fintech." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "ProfessionalService",
+                        "name": "XtraProfit Software House",
+                        "url": "https://xtraprofit.com/services",
+                        "image": "https://xtraprofit.com/software-hub.png",
+                        "description": "Bespoke software development for websites, mobile apps, and AI solutions across any industry.",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressCountry": "PK"
+                        },
+                        "serviceType": [
+                            "Web Development",
+                            "Mobile App Engineering",
+                            "AI Solutions",
+                            "E-commerce Platforms"
+                        ]
+                    }
+                    `}
+                </script>
+            </Helmet>
             {/* Deployed Labs Marquee */}
             <section className="bg-[#00193c] py-3 sm:py-3.5 overflow-hidden relative border-b border-[#caf300]/10 group/projects z-[60]">
                 <div className="hidden sm:flex items-center gap-3 px-4 sm:px-6 absolute left-0 h-full bg-[#00193c] z-20 border-r border-[#caf300]/20">
@@ -132,13 +167,13 @@ const Services = () => {
                         <div className="lg:w-3/5 text-center lg:text-left text-left">
                             <div className="inline-flex items-center gap-2 sm:gap-3 bg-[#00193c] px-3 sm:px-4 py-2 rounded-full mb-6 sm:mb-8 shadow-2xl">
                                 <div className="w-2 h-2 bg-[#caf300] rounded-full animate-pulse shadow-[0_0_10px_#caf300]"></div>
-                                <span className="text-[0.5625rem] sm:text-[0.625rem] font-black tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[#caf300]">Sovereign Tech Desk</span>
+                                <span className="text-[0.5625rem] sm:text-[0.625rem] font-black tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[#caf300]">Full-Service Software House</span>
                             </div>
-                            <h1 className="font-headline text-3xl sm:text-5xl lg:text-7xl font-black text-[#00193c] leading-[0.85] mb-6 sm:mb-10 tracking-tightest text-left">
-                                Engineering <br /><span className="text-[#29695b]">Digital Ecosystems.</span>
+                            <h1 className="font-headline text-4xl sm:text-5xl lg:text-8xl font-black text-[#00193c] leading-[0.85] mb-6 sm:mb-10 tracking-tightest">
+                                Custom Software <br /><span className="text-[#29695b]">Development Services.</span>
                             </h1>
-                            <p className="text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl mb-8 sm:mb-12 font-medium leading-relaxed text-left">
-                                Deploying <span className="font-black text-[#00193c]">high-performance</span> web and mobile applications for businesses across all sectors. We architect bespoke digital solutions designed for absolute scale.
+                            <p className="text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl mb-8 sm:mb-16 font-medium leading-relaxed mx-auto lg:mx-0">
+                                Get <Link to="/services" className="text-[#00193c] border-b-2 border-[#caf300]/30 hover:border-[#caf300] transition-colors">custom software development services</Link> for websites, mobile apps, and AI-integrated solutions. XtraProfit delivers premium digital products tailored to any industry.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-10">
                                 <button
@@ -194,9 +229,9 @@ const Services = () => {
             <section className="py-16 sm:py-24 lg:py-48 bg-[#f8f9fa] overflow-hidden text-left">
                 <div className="max-w-7xl mx-auto px-4 sm:px-8">
                     <div className="max-w-4xl mb-12 sm:mb-24">
-                        <h2 className="font-headline text-3xl sm:text-5xl lg:text-7xl font-black text-[#00193c] mb-6 sm:mb-10 tracking-tightest leading-[0.9]">Design. Code. <br /><span className="text-[#29695b] italic">Architect Growth.</span></h2>
+                        <h2 className="font-headline text-3xl sm:text-5xl lg:text-7xl font-black text-[#00193c] mb-6 sm:mb-10 tracking-tightest leading-[0.9]">Any Idea. Any Niche. <br /><span className="text-[#29695b] italic">We Ship It.</span></h2>
                         <p className="text-[#64748b] text-base sm:text-xl lg:text-2xl font-medium leading-relaxed max-w-2xl">
-                            Our development workflow is centered on <span className="font-black text-[#00193c]">absolute technical precision</span> and pixel-perfect scalability.
+                            Whether you need a restaurant website, a healthcare SaaS, or a fitness app with AI — our desk delivers <span className="font-black text-[#00193c]">production-ready solutions</span> across every vertical.
                         </p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-10">
@@ -234,15 +269,27 @@ const Services = () => {
                 <div className="absolute top-0 right-0 w-2/3 h-full bg-[#caf300]/5 blur-[150px]"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-24">
                     <div className="lg:w-1/2">
-                        <h2 className="font-headline text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-6 sm:mb-10 tracking-tightest leading-none">The Sovereign <br /><span className="text-[#caf300]">Stack.</span></h2>
-                        <p className="text-white/40 text-base sm:text-lg lg:text-2xl font-medium leading-relaxed mb-10 sm:mb-16 max-w-xl">We deploy modern ecosystems using high-density technical primitives for the digital elite.</p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
-                            {['React Native / Expo', 'Node.js / Express', 'Next.js 15 (App Router)', 'PostgreSQL / Supabase', 'Python / AI Logic', 'High-Density APIs'].map((tech, i) => (
+                        <h2 className="font-headline text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-6 sm:mb-10 tracking-tightest leading-none">Our Tech <br /><span className="text-[#caf300]">Arsenal.</span></h2>
+                        <p className="text-white/40 text-base sm:text-lg lg:text-2xl font-medium leading-relaxed mb-10 sm:mb-16 max-w-xl">Battle-tested frameworks and modern toolkits to build anything — from a simple landing page to a complex AI-driven platform.</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5 mb-10 sm:mb-16">
+                            {['React / Next.js', 'React Native / Flutter', 'Node.js / Express', 'Python / Django', 'PostgreSQL / MongoDB', 'OpenAI / Gemini AI', 'AWS / Vercel / Firebase', 'Docker / Kubernetes'].map((tech, i) => (
                                 <div key={i} className="flex items-center gap-3 sm:gap-4 bg-white/5 border border-white/10 px-4 sm:px-6 py-3 sm:py-4 rounded-[1rem] sm:rounded-[1.25rem] hover:bg-white/10 transition-all cursor-default w-full">
                                     <CheckCircle size={16} className="text-[#caf300] shrink-0 sm:w-[18px] sm:h-[18px]" />
                                     <span className="text-white font-headline font-black text-[0.6rem] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em]">{tech}</span>
                                 </div>
                             ))}
+                        </div>
+
+                        {/* Industries We Serve */}
+                        <div>
+                            <p className="text-[0.625rem] font-black uppercase tracking-[0.4em] text-[#caf300]/60 mb-5">Industries We Serve</p>
+                            <div className="flex flex-wrap gap-2 sm:gap-3">
+                                {industries.map((niche, i) => (
+                                    <span key={i} className="px-3 sm:px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[0.55rem] sm:text-[0.6rem] font-black uppercase tracking-[0.2em] text-white/70 hover:text-[#caf300] hover:border-[#caf300]/30 transition-all cursor-default">
+                                        {niche}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                     </div>
                     <div className="lg:w-1/2 w-full">
@@ -267,7 +314,7 @@ const Services = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-24 relative z-10">
                         <div className="text-left">
                             <h2 className="font-headline text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-6 sm:mb-10 tracking-tightest leading-[0.85]">Project <br /><span className="text-[#caf300]">Inquiry</span></h2>
-                            <p className="text-white/40 text-base sm:text-lg lg:text-2xl font-medium mb-10 sm:mb-16 max-w-md leading-relaxed">Submit technical parameters for sovereign desk build-out. Verified responses in 24h.</p>
+                            <p className="text-white/40 text-base sm:text-lg lg:text-2xl font-medium mb-10 sm:mb-16 max-w-md leading-relaxed">Tell us about your project — any industry, any platform. We'll architect the perfect solution. Response within 24h.</p>
                             <div className="space-y-8 sm:space-y-12">
                                 <div className="flex items-center gap-4 sm:gap-8 group cursor-default">
                                     <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-[1.25rem] sm:rounded-[1.5rem] bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-[#caf300] group-hover:text-[#00193c] transition-all duration-500 shadow-xl shrink-0">
@@ -347,6 +394,26 @@ const Services = () => {
                                 </form>
                             )}
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Related Tools Section */}
+            <section className="py-16 sm:py-24 lg:py-32 bg-[#f8f9fa] border-t border-black/5 text-left">
+                <div className="max-w-7xl mx-auto px-4 sm:px-8">
+                    <h2 className="font-headline font-black text-2xl sm:text-4xl text-[#00193c] mb-8 sm:mb-12 tracking-tight">Financial Hub & Tools</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { name: 'Currency Converter', link: '/tools/currency', desc: 'Real-time FX exchange rates.' },
+                            { name: 'EMI Calculator', link: '/tools/emi', desc: 'Calculate monthly loan repayments.' },
+                            { name: 'Investment Calculator', link: '/tools/investment', desc: 'Plan SIP and compound growth.' },
+                            { name: 'Crypto Prices', link: '/crypto', desc: 'Live digital asset tracking.' }
+                        ].map((tool, i) => (
+                            <Link key={i} to={tool.link} className="bg-white border border-black/5 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all group">
+                                <h3 className="font-headline font-black text-lg text-[#00193c] group-hover:text-[#29695b] transition-colors mb-2">{tool.name}</h3>
+                                <p className="text-sm text-[#64748b] font-medium">{tool.desc}</p>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </section>

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ShieldCheck, History, TrendingUp, Info, Activity, Globe, Anchor, Zap, Cpu, AlertCircle } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -75,6 +77,25 @@ const Gold = () => {
 
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8 font-body">
+            <Helmet>
+                <title>Gold Price Today & Live Metals Rates | XtraProfit</title>
+                <meta name="description" content="Track gold price today and live metal rates for Silver and Platinum. Our Precious Metals Matrix syncs with institutional LBMA data feeds." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "FinancialProduct",
+                        "name": "Precious Metal Market Data",
+                        "description": "Live gold and silver prices with real-time tracking for precious metals benchmarks.",
+                        "url": "https://xtraprofit.com/metals",
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "XtraProfit"
+                        }
+                    }
+                    `}
+                </script>
+            </Helmet>
             <div className="max-w-7xl mx-auto">
                 <header className="mb-12 sm:mb-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 sm:gap-10">
                     <div className="flex-grow">
@@ -84,9 +105,12 @@ const Gold = () => {
                                 {loading ? 'Calibrating Nodes...' : 'Precious Metals Matrix • LBMA API Mirror'}
                             </span>
                         </div>
-                        <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-7xl tracking-tightest text-[#00193c] leading-[0.85] max-w-4xl">
-                            Metallurgy <br /><span className="text-[#29695b]">Sovereign Index.</span>
+                        <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-7xl tracking-tightest text-[#00193c] leading-[0.85]">
+                            Gold & Silver <br /><span className="text-[#29695b]">Prices Today.</span>
                         </h1>
+                        <p className="mt-6 sm:mt-10 text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed italic text-left">
+                            Track live <Link to="/metals" className="text-[#00193c] border-b-2 border-[#caf300]/30 hover:border-[#caf300] transition-colors">gold and silver prices today</Link> with real-time spot price benchmarks. Our metallurgy matrix is synced with institutional LBMA market data.
+                        </p>
                     </div>
                     <div className="hidden lg:flex flex-col items-end gap-2 text-right">
                         <div className="flex items-center gap-3 text-[0.625rem] font-black text-[#64748b] uppercase tracking-[0.4em]">
@@ -200,6 +224,23 @@ const Gold = () => {
                         </div>
                     </div>
                 </div>
+                {/* Related Tools Section */}
+                <section className="mt-20 sm:mt-32 border-t border-black/5 pt-16 sm:pt-24 text-left">
+                    <h2 className="font-headline font-black text-2xl sm:text-4xl text-[#00193c] mb-8 sm:mb-12 tracking-tight">Related Financial Tools</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { name: 'Currency Converter', link: '/tools/currency', desc: 'Real-time FX exchange rates.' },
+                            { name: 'EMI Calculator', link: '/tools/emi', desc: 'Calculate monthly loan repayments.' },
+                            { name: 'Investment Calculator', link: '/tools/investment', desc: 'Plan SIP and compound growth.' },
+                            { name: 'Profit Calculator', link: '/tools/profit', desc: 'Forecast business capitalization.' }
+                        ].map((tool, i) => (
+                            <Link key={i} to={tool.link} className="bg-white border border-black/5 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all group">
+                                <h3 className="font-headline font-black text-lg text-[#00193c] group-hover:text-[#29695b] transition-colors mb-2">{tool.name}</h3>
+                                <p className="text-sm text-[#64748b] font-medium">{tool.desc}</p>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
             </div>
         </div>
     );

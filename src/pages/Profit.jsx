@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowRightLeft, TrendingUp, History, ShieldCheck, Zap, Info, ArrowUpRight } from "lucide-react";
 import { cn } from "../lib/utils";
 
@@ -14,23 +16,45 @@ const Profit = () => {
 
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
+            <Helmet>
+                <title>Profit Margin Calculator & Business Planner | XtraProfit</title>
+                <meta name="description" content="Calculate business profits and margins with our Profit Realization Hub. accurately forecast gross capitalization and unit-level margins." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Profit Margin Calculator",
+                        "applicationCategory": "FinanceApplication",
+                        "operatingSystem": "Web",
+                        "url": "https://xtraprofit.com/tools/profit",
+                        "description": "Calculate unit-level margins and gross business capitalization with our precision profit calculator.",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        }
+                    }
+                    `}
+                </script>
+            </Helmet>
             <div className="max-w-7xl mx-auto">
                 <header className="mb-12 sm:mb-20">
                     <div className="inline-flex items-center gap-2 sm:gap-3 bg-[#00193c] px-3 sm:px-5 py-2 sm:py-2.5 rounded-full mb-6 sm:mb-10 shadow-2xl">
                         <div className="w-2 h-2 bg-[#caf300] rounded-full animate-pulse shadow-[0_0_10px_#caf300]"></div>
                         <span className="text-[0.5rem] sm:text-[0.625rem] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#caf300] font-label">Liquidity Realization Desk • Active Terminal</span>
                     </div>
-                    <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-8xl tracking-tightest text-[#00193c] leading-[0.85] max-w-4xl">
-                        Fiscal <br /><span className="text-[#29695b]">Realization Hub.</span>
+                    <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-8xl tracking-tightest text-[#00193c] leading-[0.85]">
+                        Profit Margin Calculator <br /><span className="text-[#29695b]">for Business Analysis.</span>
                     </h1>
-                    <p className="mt-6 sm:mt-10 text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed">
-                        High-precision institutional profit and margin forecasting. Analyze your capitalization strategies with absolute technical clarity.
+                    <p className="mt-6 sm:mt-10 text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed italic">
+                        Calculate business profit margins and analyze unit-level profitability with our <Link to="/profit" className="text-[#00193c] border-b-2 border-[#caf300]/30 hover:border-[#caf300] transition-colors">Profit Margin Calculator</Link>. Benchmark your capitalization strategies with technical clarity.
                     </p>
                 </header>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
                     {/* Calculator Field Matrix */}
-                    <div className="lg:col-span-8 bg-white border border-black/5 p-6 sm:p-12 rounded-[2rem] sm:rounded-[3.5rem] shadow-3xl overflow-hidden relative group">
+                    <div className="lg:col-span-8 bg-white border border-black/5 p-6 sm:p-12 rounded-[2rem] sm:rounded-[3.5rem] shadow-3xl overflow-hidden relative group text-left">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-[#caf300]/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-[#caf300]/10 transition-all"></div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 relative z-10">
@@ -74,7 +98,7 @@ const Profit = () => {
 
                     {/* Result Sidebar */}
                     <div className="lg:col-span-4 h-full">
-                        <section className="bg-[#00193c] p-8 sm:p-12 lg:p-16 rounded-[2rem] sm:rounded-[3.5rem] text-white relative overflow-hidden h-full flex flex-col justify-between shadow-3xl border border-white/5">
+                        <section className="bg-[#00193c] p-8 sm:p-12 lg:p-16 rounded-[2rem] sm:rounded-[3.5rem] text-white relative overflow-hidden h-full flex flex-col justify-between shadow-3xl border border-white/5 text-left">
                             <div className="absolute top-0 right-0 w-2/3 h-full bg-[#caf300]/5 blur-[150px] pointer-events-none"></div>
 
                             <div className="relative z-10 w-full mb-10 sm:mb-16">
@@ -116,6 +140,24 @@ const Profit = () => {
                         </section>
                     </div>
                 </div>
+
+                {/* Related Tools Section */}
+                <section className="mt-20 sm:mt-32 border-t border-black/5 pt-16 sm:pt-24 text-left">
+                    <h2 className="font-headline font-black text-2xl sm:text-4xl text-[#00193c] mb-8 sm:mb-12 tracking-tight">Related Financial Tools</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { name: 'Currency Converter', link: '/tools/currency', desc: 'Real-time FX exchange rates.' },
+                            { name: 'EMI Calculator', link: '/tools/emi', desc: 'Calculate monthly loan repayments.' },
+                            { name: 'Investment Calculator', link: '/tools/investment', desc: 'Plan SIP and compound growth.' },
+                            { name: 'Crypto Prices', link: '/crypto', desc: 'Live digital asset tracking.' }
+                        ].map((tool, i) => (
+                            <Link key={i} to={tool.link} className="bg-white border border-black/5 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all group">
+                                <h3 className="font-headline font-black text-lg text-[#00193c] group-hover:text-[#29695b] transition-colors mb-2">{tool.name}</h3>
+                                <p className="text-sm text-[#64748b] font-medium">{tool.desc}</p>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
             </div>
         </div>
     );

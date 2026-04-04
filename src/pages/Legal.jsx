@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import React, { useEffect, useState } from 'react';
 import { Shield, FileText, AlertTriangle, Cookie, ArrowLeft, ChevronRight, Lock, Scale, Eye, Info } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -96,6 +97,10 @@ const Legal = ({ section = 'terms' }) => {
 
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 pb-32">
+            <Helmet>
+                <title>Terms of Service & Privacy Policy | XtraProfit Governance</title>
+                <meta name="description" content="Review XtraProfit's Terms of Service, Privacy Policy, Risk Disclosure, and Cookie Infrastructure in our institutional Governance Protocol." />
+            </Helmet>
             <div className="max-w-7xl mx-auto px-8">
                 {/* Back Link */}
                 <Link
@@ -112,10 +117,10 @@ const Legal = ({ section = 'terms' }) => {
                     {/* SIDEBAR NAVIGATION */}
                     <aside className="lg:w-1/3">
                         <h1 className="font-headline text-5xl font-black text-[#00193c] mb-10 tracking-tightest leading-[0.85]">
-                            Governance <br /><span className="text-[#29695b]">Protocol.</span>
+                            Terms of Service <br /><span className="text-[#29695b]">& Privacy Policy.</span>
                         </h1>
                         <p className="text-[#64748b] text-lg font-medium leading-relaxed mb-16 max-w-sm">
-                            Operation under absolute institutional parameters. Review our sovereign technical benchmarks.
+                            Review our official Terms of Service, Privacy Policy, and Risk Disclosure protocols. Understand the institutional benchmarks and governance of the XtraProfit platform.
                         </p>
 
                         <nav className="flex flex-col gap-3">

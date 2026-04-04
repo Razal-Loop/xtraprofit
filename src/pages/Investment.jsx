@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Wallet, TrendingUp, Calendar, ShieldCheck, Zap, Info, ArrowUpRight, Coins } from "lucide-react";
 import { finance } from "../utils/finance";
 
@@ -23,17 +25,39 @@ const Investment = () => {
 
     return (
         <div className="bg-[#f8f9fa] min-h-screen pt-24 sm:pt-32 pb-20 sm:pb-40 px-4 sm:px-8">
+            <Helmet>
+                <title>SIP & Investment Calculator | XtraProfit Yield Forecasting</title>
+                <meta name="description" content="Advanced SIP & Investment Calculator. Model compound growth, mutual fund returns, and wealth realization with institutional-grade financial precision." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "Investment Calculator",
+                        "applicationCategory": "FinanceApplication",
+                        "operatingSystem": "Web",
+                        "url": "https://xtraprofit.com/tools/investment",
+                        "description": "Model compound growth, SIP returns, and mutual fund growth with our professional investment calculator.",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        }
+                    }
+                    `}
+                </script>
+            </Helmet>
             <div className="max-w-7xl mx-auto">
                 <header className="mb-12 sm:mb-20">
                     <div className="inline-flex items-center gap-2 sm:gap-3 bg-[#00193c] px-3 sm:px-5 py-2 sm:py-2.5 rounded-full mb-6 sm:mb-10 shadow-2xl">
                         <div className="w-2 h-2 bg-[#caf300] rounded-full animate-pulse shadow-[0_0_10px_#caf300]"></div>
                         <span className="text-[0.5rem] sm:text-[0.625rem] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#caf300] font-label">Capital Growth Desk • Active Terminal</span>
                     </div>
-                    <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-8xl tracking-tightest text-[#00193c] leading-[0.85] max-w-4xl">
-                        Yield <br /><span className="text-[#29695b]">Forecasting.</span>
+                    <h1 className="font-headline font-black text-3xl sm:text-5xl lg:text-8xl tracking-tightest text-[#00193c] leading-[0.85]">
+                        Investment & SIP Calculator <br /><span className="text-[#29695b]">for Compound Growth.</span>
                     </h1>
-                    <p className="mt-6 sm:mt-10 text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed">
-                        High-precision compound growth modeling. Visualize your capitalization trajectory with absolute technical clarity.
+                    <p className="mt-6 sm:mt-10 text-[#64748b] text-base sm:text-xl lg:text-2xl max-w-2xl font-medium leading-relaxed italic">
+                        Plan your financial future with our <Link to="/investment" className="text-[#00193c] border-b-2 border-[#caf300]/30 hover:border-[#caf300] transition-colors">Investment and SIP Calculator</Link> for compound growth projections. Model your wealth realization with high-precision financial logic.
                     </p>
                 </header>
 
@@ -84,16 +108,16 @@ const Investment = () => {
 
                     {/* Result Sidebar */}
                     <div className="lg:col-span-4 h-full">
-                        <section className="bg-[#00193c] p-8 sm:p-12 lg:p-16 rounded-[2rem] sm:rounded-[3.5rem] text-white relative overflow-hidden h-full flex flex-col justify-between shadow-3xl border border-white/5 font-body">
+                        <section className="bg-[#00193c] p-6 sm:p-10 lg:p-12 rounded-[2rem] sm:rounded-[3.5rem] text-white relative overflow-hidden h-full flex flex-col justify-between shadow-3xl border border-white/5 font-body">
                             <div className="absolute top-0 right-0 w-2/3 h-full bg-[#caf300]/5 blur-[150px] pointer-events-none"></div>
 
-                            <div className="relative z-10 w-full mb-10 sm:mb-16">
+                            <div className="relative z-10 w-full mb-8 sm:mb-12 overflow-hidden">
                                 <div className="space-y-10 sm:space-y-16">
                                     <div className="group">
                                         <p className="text-[0.5625rem] sm:text-[0.6875rem] font-black text-[#caf300] uppercase tracking-[0.4em] sm:tracking-[0.5em] mb-3 sm:mb-4 opacity-100 group-hover:translate-x-2 transition-transform duration-500">Maturity Value</p>
-                                        <div className="flex items-baseline gap-2 sm:gap-3">
-                                            <span className="text-lg sm:text-xl font-headline font-black text-white/40">$</span>
-                                            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-headline font-black text-white tracking-tightest leading-none">
+                                        <div className="flex items-baseline gap-2 overflow-hidden">
+                                            <span className="text-base sm:text-lg font-headline font-black text-white/40 shrink-0">$</span>
+                                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-headline font-black text-white tracking-tightest leading-none truncate">
                                                 {results.totalValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                                             </h2>
                                         </div>
@@ -101,9 +125,9 @@ const Investment = () => {
 
                                     <div className="group">
                                         <p className="text-[0.5625rem] sm:text-[0.6875rem] font-black text-[#29695b] uppercase tracking-[0.4em] sm:tracking-[0.5em] mb-3 sm:mb-4 group-hover:text-[#caf300] transition-colors group-hover:translate-x-2 transition-transform duration-500">Wealth Generation</p>
-                                        <div className="flex items-baseline gap-2 sm:gap-3">
-                                            <span className="text-lg sm:text-xl font-headline font-black text-[#caf300]/40">$</span>
-                                            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-headline font-black text-[#caf300] tracking-tightest leading-none">
+                                        <div className="flex items-baseline gap-2 overflow-hidden">
+                                            <span className="text-base sm:text-lg font-headline font-black text-[#caf300]/40 shrink-0">$</span>
+                                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-headline font-black text-[#caf300] tracking-tightest leading-none truncate">
                                                 {results.interestEarned.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                                             </h2>
                                         </div>
@@ -111,21 +135,39 @@ const Investment = () => {
                                 </div>
                             </div>
 
-                            <div className="mt-auto bg-white/5 p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] border border-white/5 relative z-10 w-full hover:bg-white/10 transition-all cursor-default text-left">
+                            <div className="mt-auto bg-white/5 p-5 sm:p-8 rounded-[1.5rem] sm:rounded-[2.5rem] border border-white/5 relative z-10 w-full hover:bg-white/10 transition-all cursor-default text-left overflow-hidden">
                                 <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-[0.5625rem] sm:text-[0.625rem] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] font-headline text-white/50">
                                     <Info size={16} className="text-[#caf300] sm:w-[18px] sm:h-[18px]" />
                                     Terminal Status
                                 </div>
-                                <div className="space-y-3 sm:space-y-5">
-                                    <div className="flex justify-between items-center px-1 sm:px-2 py-1"><span className="text-[0.625rem] sm:text-xs font-bold text-white/30 uppercase tracking-[0.1em]">Total Invested</span><span className="font-headline font-black text-base sm:text-lg text-white">${results.totalInvested.toLocaleString()}</span></div>
-                                    <div className="flex justify-between items-center px-1 sm:px-2 py-1"><span className="text-[0.625rem] sm:text-xs font-bold text-white/30 uppercase tracking-[0.1em]">Target Growth</span><span className="font-headline font-black text-base sm:text-lg text-white">+{results.interestEarned.toLocaleString()}</span></div>
+                                <div className="space-y-3 sm:space-y-4">
+                                    <div className="flex justify-between items-center gap-3 px-1 py-1"><span className="text-[0.625rem] sm:text-xs font-bold text-white/30 uppercase tracking-[0.1em] shrink-0">Total Invested</span><span className="font-headline font-black text-sm sm:text-base text-white truncate text-right">${results.totalInvested.toLocaleString()}</span></div>
+                                    <div className="flex justify-between items-center gap-3 px-1 py-1"><span className="text-[0.625rem] sm:text-xs font-bold text-white/30 uppercase tracking-[0.1em] shrink-0">Target Growth</span><span className="font-headline font-black text-sm sm:text-base text-white truncate text-right">+{results.interestEarned.toLocaleString()}</span></div>
                                     <div className="h-[2px] bg-white/10 rounded-full w-full"></div>
-                                    <div className="flex justify-between items-center px-1 sm:px-2 py-1"><span className="text-[0.625rem] sm:text-xs font-bold text-[#caf300] uppercase tracking-[0.1em]">Growth Multiple</span><span className="font-headline font-black text-xl sm:text-2xl text-[#caf300]">{(results.totalValue / (parseFloat(initial) || 1)).toFixed(1)}x</span></div>
+                                    <div className="flex justify-between items-center gap-3 px-1 py-1"><span className="text-[0.625rem] sm:text-xs font-bold text-[#caf300] uppercase tracking-[0.1em] shrink-0">Growth Multiple</span><span className="font-headline font-black text-lg sm:text-xl text-[#caf300] truncate text-right">{(results.totalValue / (parseFloat(initial) || 1)).toFixed(1)}x</span></div>
                                 </div>
                             </div>
                         </section>
                     </div>
                 </div>
+
+                {/* Related Tools Section */}
+                <section className="mt-20 sm:mt-32 border-t border-black/5 pt-16 sm:pt-24 text-left">
+                    <h2 className="font-headline font-black text-2xl sm:text-4xl text-[#00193c] mb-8 sm:mb-12 tracking-tight">Related Financial Tools</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { name: 'Currency Converter', link: '/tools/currency', desc: 'Real-time FX exchange rates.' },
+                            { name: 'EMI Calculator', link: '/tools/emi', desc: 'Calculate monthly loan repayments.' },
+                            { name: 'Profit Calculator', link: '/tools/profit', desc: 'Forecast business capitalization.' },
+                            { name: 'Crypto Prices', link: '/crypto', desc: 'Live digital asset tracking.' }
+                        ].map((tool, i) => (
+                            <Link key={i} to={tool.link} className="bg-white border border-black/5 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all group">
+                                <h3 className="font-headline font-black text-lg text-[#00193c] group-hover:text-[#29695b] transition-colors mb-2">{tool.name}</h3>
+                                <p className="text-sm text-[#64748b] font-medium">{tool.desc}</p>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
             </div>
         </div>
     );

@@ -11,6 +11,7 @@ import Services from './pages/Services';
 import Legal from './pages/Legal';
 import EMI from './pages/EMI';
 import Investment from './pages/Investment';
+import Tools from './pages/Tools';
 
 // Placeholder components for other pages
 const Placeholder = ({ name }) => (
@@ -25,10 +26,13 @@ function App() {
         <Routes>
             <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
-                <Route path="profit" element={<Profit />} />
-                <Route path="emi" element={<EMI />} />
-                <Route path="investment" element={<Investment />} />
-                <Route path="currency" element={<Currency />} />
+                <Route path="tools">
+                    <Route index element={<Tools />} />
+                    <Route path="profit" element={<Profit />} />
+                    <Route path="emi" element={<EMI />} />
+                    <Route path="investment" element={<Investment />} />
+                    <Route path="currency" element={<Currency />} />
+                </Route>
                 <Route path="crypto" element={<Crypto />} />
                 <Route path="metals" element={<Gold />} />
                 <Route path="news" element={<News />} />
